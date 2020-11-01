@@ -41,9 +41,6 @@ public class Juego {
 		personaje.setJuego(this);
 		gui.agregarEntidad(personaje.getLabel());
 		System.out.println("inicializar personaje");
-		
-
-
 	}
 	
 	
@@ -69,6 +66,10 @@ public class Juego {
 			Entidad entidad = listaEntidades.get(i);
 			entidad.mover();
 		}
+	}
+	
+	public Entidad getPersonaje() {
+		return personaje;
 	}
 	
 }

@@ -3,6 +3,8 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -55,6 +57,8 @@ public class GUI extends JFrame {
 		juego.setTiempo(tiempo);
 		tiempo.start();
 		
+		iniciarKeyListener();
+		
 	}
 	
 	public void agregarEntidad(JLabel nuevo) {
@@ -64,4 +68,16 @@ public class GUI extends JFrame {
 		repaint();
 	}
 
+	private void iniciarKeyListener() {
+		addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent arg0) {
+				juego.getPersonaje().keyPressed(arg0);
+			}
+        	public void keyReleased(KeyEvent arg0) {
+            	juego.getPersonaje().keyReleased(arg0);
+			 }
+		});
+	}
+		
 }
+		

@@ -95,10 +95,10 @@ public abstract class Mapa {
 		Random ranX = new Random();
 		Random ranY = new Random();
 		
-		int x = ranX.nextInt(500);
+		int x = ranX.nextInt(4);
 		int y = ranY.nextInt(500);
 		
-		Point punto = new Point(x, y);
+		Point punto = new Point(x*100, y);
 		
 		return punto;
 	}

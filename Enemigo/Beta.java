@@ -1,5 +1,7 @@
 package Enemigo;
 
+import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 
 import Logica.Entidad;
@@ -29,5 +31,17 @@ public class Beta extends Enemigo {
     public Enemigo clonar() {
 		Enemigo clone = new Beta(0,0);
 		return clone;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
