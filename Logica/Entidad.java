@@ -1,6 +1,7 @@
 package Logica;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 
@@ -45,4 +46,8 @@ public abstract class Entidad  {
 	}
 	
 	public abstract void mover();
+
+	public abstract void keyPressed(KeyEvent arg0);
+
+	public abstract void keyReleased(KeyEvent arg0);
 }

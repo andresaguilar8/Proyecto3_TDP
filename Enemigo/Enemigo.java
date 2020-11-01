@@ -22,6 +22,7 @@ public abstract class Enemigo extends Entidad{
 //			juego.disminuirVida(1);
 		}
 	}
+	
     public void parar() {
         this.setPosicion(this.getPosicion().x,  this.getPosicion().y);
     }
