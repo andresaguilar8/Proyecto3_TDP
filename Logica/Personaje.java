@@ -36,16 +36,32 @@ public class Personaje extends Entidad {
 		this.label = label;
 	}
 
+	public void moverDerecha() {
+		System.out.println("jugador moviendo a derecha");
+		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata derecha/caminataDerecha1.gif")));
+		this.mover();
+	}
+	
+	public void moverIzquierda() {
+		System.out.println("jugador moviendo a izquierda");
+		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata izquierda/caminataIzquierda1.gif")));
+		this.mover();
+	}
 	
 	public void mover() {
 		System.out.println("jugador moviendo");
 		Point pos = this.getPosicion();
-		label.setLocation(pos.x + desplazamientoX, pos.y);
+		
+		
         if (pos.x < 1) 
             pos.x = 1;
         
-        if (pos.x > 500) 
-            pos.x = 500;
+        if (pos.x > 400) 
+            pos.x = 400;
+        
+        label.setLocation(pos.x + desplazamientoX, pos.y);
+        
+//        this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 	}
 	
 //	public void disparar() {
@@ -62,18 +78,21 @@ public class Personaje extends Entidad {
 	        //case KeyEvent.VK_SPACE :
 	        	//disparar=true;
 	        	//break;
-			case KeyEvent.VK_LEFT : 
+			case KeyEvent.VK_LEFT : {
 				desplazamientoX = - velocidad;
+				this.moverIzquierda();
 				break;
-			case KeyEvent.VK_RIGHT : 
+			}
+			case KeyEvent.VK_RIGHT : {
 				desplazamientoX = velocidad;
+				this.moverDerecha();
 				break;
+			}
 	    }
-	    this.mover();
     }
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println("key: "+key);
+        System.out.println("asdsad: "+key);
         switch (key){
         	//case KeyEvent.VK_SPACE :
         		//disparar=false;
