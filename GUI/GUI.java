@@ -16,6 +16,7 @@ import Logica.Juego;
 
 public class GUI extends JFrame {
 
+	//el dani es un capo
 	protected JPanel contentPane;
 	protected JPanelConFondo panelJuego;
 	protected Juego juego;
