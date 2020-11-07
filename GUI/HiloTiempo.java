@@ -19,7 +19,6 @@ public class HiloTiempo extends Thread{
 				e.printStackTrace();
 			}		
 			
-//			juego.inicializarPersonaje();
 			juego.agregarEntidades();
 			//juego.eliminarEntidades();
 			juego.colisionar();

@@ -3,6 +3,8 @@ package Visitor;
 import Enemigo.Alpha;
 import Enemigo.Beta;
 import Enemigo.Enemigo;
+import Lanzamiento.LanzamientoAliado;
+import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
 
@@ -15,7 +17,8 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public void visitar(Personaje p) 
 	{
-		//this.entidad.atacar(p);
+		miEntidad.atacar(p);
+		System.out.println("enemigo atacando a personaje");
 	}
 
 	@Override
@@ -31,6 +34,18 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visitar(Enemigo enemigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(LanzamientoAliado lanzamientoAliado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		// TODO Auto-generated method stub
 		
 	}

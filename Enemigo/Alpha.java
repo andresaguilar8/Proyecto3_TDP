@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Logica.Entidad;
 import Visitor.Visitor;
+import Visitor.VisitorPersonaje;
 
 public class Alpha extends Enemigo {
 
@@ -13,6 +14,7 @@ public class Alpha extends Enemigo {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
 		label.setBounds(x, y, 117, 110);
+		visitor = new VisitorPersonaje(this);
 	}
 	
 	public void mover() {
@@ -21,7 +23,7 @@ public class Alpha extends Enemigo {
     }
 
     public void atacar(Entidad e) {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlfaAtacaGif.gif")));
+        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
     }
 
     public void parar() {

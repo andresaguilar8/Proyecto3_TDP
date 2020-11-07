@@ -4,25 +4,40 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Lanzamiento.Arma;
+import Lanzamiento.ArmaEnemigo;
 import Logica.Entidad;
 import Visitor.Visitor;
+import Visitor.VisitorEnemigo;
+import Visitor.VisitorPersonaje;
 
 public class Beta extends Enemigo {
 
+	protected Arma arma;
+	int contador;
+	
 	public Beta(int x, int y) {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
 		label.setBounds(x, y, 117 , 110);
+		arma = new ArmaEnemigo();
+		contador = 0;
+		velocidad = 1;
 	}
 
 	public void mover() {
         super.mover();
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
-//        label.setBounds(110 , 110);
-    }
+	}
 
     public void atacar(Entidad e) {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaAtacaGif.gif")));
+        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+        
+        contador++;
+		if(contador == 70) {
+			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), cargaViral));
+			contador = 0;
+		}
     }
 
     public void parar() {
@@ -34,7 +49,8 @@ public class Beta extends Enemigo {
 		return clone;
 	}
 
-	@Override
+	
+    @Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

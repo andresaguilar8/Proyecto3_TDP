@@ -62,4 +62,6 @@ public abstract class Entidad  {
 	public abstract void keyReleased(KeyEvent arg0);
 
 	public abstract void atacar(Entidad e);
+
+
 }

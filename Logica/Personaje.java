@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Lanzamiento.Arma;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
 
@@ -14,6 +15,7 @@ public class Personaje extends Entidad {
 	private int cargaViral;
 	protected int desplazamientoX;
 	protected int velocidad;
+	protected Arma arma;
 
 	public Personaje(int x, int y) {
 		super(x, y);
@@ -118,9 +120,6 @@ public class Personaje extends Entidad {
 
 	@Override
 	public void atacar(Entidad e) {
-		// TODO Auto-generated method stub
-		
 		System.out.println("jugador atacando al enemigo");
-		
 	} 
 }

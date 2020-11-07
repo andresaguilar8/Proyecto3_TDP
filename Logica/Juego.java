@@ -42,13 +42,13 @@ public class Juego {
 		personaje.setJuego(this);
 		gui.agregarEntidad(personaje.getLabel());
 		System.out.println("inicializar personaje");
-		listaEntidades.add(personaje);
+		//listaEntidades.add(personaje);
 	}
 	
 	
 	public void agregarEntidades() {
 		for(Entidad e: entidadesPendientes) {
-			listaEntidades.addLast(e);
+			//listaEntidades.addLast(e);
 			gui.agregarEntidad(e.getLabel());
 		}
 		entidadesPendientes.clear();
@@ -64,21 +64,62 @@ public class Juego {
 	}
 	
 	public void colisionar() {
+		boolean collidedGeneral = false;
 		for (int i = 0; i < listaEntidades.size(); i++) {
 			Entidad entidad_1 = listaEntidades.get(i);
-			//entidad.mover();
-			boolean collidedGeneral = false;
-			for(int j = 0;j < listaEntidades.size();j++) {
-				Entidad entidad_2 = listaEntidades.get(j);
-				if(entidad_1 != entidad_2 && verificarColision(entidad_1, entidad_2)) {
-					entidad_1.colisionar(entidad_2);
-					collidedGeneral=true;
-				}				
+			
+				if (colisionanEnColumna(entidad_1, personaje)) {
+					entidad_1.colisionar(personaje);
+					System.out.println("se intersectan en columna");
+//					entidad_1.atacar(personaje);
+				}
+				else
+					if (verificarColision(entidad_1, personaje)) {
+						entidad_1.colisionar(personaje);
+						collidedGeneral = true;
+						System.out.println("se intersectan");
+					}
+						
+					if (!collidedGeneral)
+						entidad_1.mover();
+					collidedGeneral = false;
 			}
-			if(!collidedGeneral) {
-				entidad_1.mover();
+			
+			for (int j = 0; j < entidadesPendientes.size(); j++) {
+				Entidad entidad = entidadesPendientes.get(j);
+//				entidad.mover();
+				//if (verificarColision(entidad, personaje)) {
+					//entidad.colisionar(personaje);
+					//System.out.println("entidad pendiente colisiono con el jugador");
+				//}
+
 			}
+			
+				
+//			if (verificarColision(entidad_1, personaje)) {
+//						entidad_1.colisionar(personaje);
+//						//personaje.colisionar(entidad_1);
+//						collidedGeneral = true;
+//			}	
+						
+			//System.out.println(listaEntidades.size());
+//			if(!collidedGeneral) {
+//				entidad_1.mover();
+//			}
+			
 		}
+	
+
+	private boolean colisionanEnColumna(Entidad entidad_1, Entidad entidad_2) {
+		Rectangle r1 = entidad_1.getLabel().getBounds();
+		Rectangle r2 = entidad_2.getLabel().getBounds();
+		r1.height += 500;
+		if (r1.intersects(r2)) {
+			System.out.println("se intersectan");
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {

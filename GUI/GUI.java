@@ -50,7 +50,7 @@ public class GUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/fondo_prueba.png")).getImage());
+		panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_!.jpeg")).getImage());
 		contentPane.add(panelJuego);
 		juego = new Juego(this);
 		tiempo = new HiloTiempo(juego);

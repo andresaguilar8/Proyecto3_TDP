@@ -8,42 +8,46 @@ import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
 
-public class VisitorPersonaje extends Visitor {
-	
-	public VisitorPersonaje(Entidad e) {
+public class VisitorLanzamientoAliado extends Visitor {
+
+	public VisitorLanzamientoAliado(Entidad e) {
 		miEntidad = e;
 	}
-
-	@Override
-	public void visitar(Enemigo e) {
-		miEntidad.atacar(e);
-	}
 	
-	public void visitar(Alpha a) {
-		miEntidad.atacar(a);
-	}
-	
-	public void visitar(Beta b) {
-		miEntidad.atacar(b);
-	}
-
 	@Override
 	public void visitar(Personaje e) {
-		miEntidad.atacar(e);
-		System.out.println("visitar (Personaje e)");
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void visitar(Alpha a) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void visitar(Beta b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void visitar(Enemigo enemigo) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 }

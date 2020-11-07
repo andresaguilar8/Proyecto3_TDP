@@ -3,6 +3,8 @@ package Visitor;
 import Enemigo.Alpha;
 import Enemigo.Beta;
 import Enemigo.Enemigo;
+import Lanzamiento.LanzamientoAliado;
+import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
 
@@ -17,6 +19,10 @@ public abstract class Visitor {
 	public abstract void visitar(Beta b);
 
 	public abstract void visitar(Enemigo enemigo);
+
+	public abstract void visitar(LanzamientoAliado lanzamientoAliado);
+
+	public abstract void visitar(LanzamientoEnemigo lanzamientoEnemigo);
 	
 	//public void visitar(Proyectil p) {}
 	
