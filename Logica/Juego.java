@@ -1,5 +1,6 @@
 package Logica;
 
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;
@@ -41,6 +42,7 @@ public class Juego {
 		personaje.setJuego(this);
 		gui.agregarEntidad(personaje.getLabel());
 		System.out.println("inicializar personaje");
+		listaEntidades.add(personaje);
 	}
 	
 	
@@ -63,9 +65,31 @@ public class Juego {
 	
 	public void colisionar() {
 		for (int i = 0; i < listaEntidades.size(); i++) {
-			Entidad entidad = listaEntidades.get(i);
-			entidad.mover();
+			Entidad entidad_1 = listaEntidades.get(i);
+			//entidad.mover();
+			boolean collidedGeneral = false;
+			for(int j = 0;j < listaEntidades.size();j++) {
+				Entidad entidad_2 = listaEntidades.get(j);
+				if(entidad_1 != entidad_2 && verificarColision(entidad_1, entidad_2)) {
+					entidad_1.colisionar(entidad_2);
+					collidedGeneral=true;
+				}				
+			}
+			if(!collidedGeneral) {
+				entidad_1.mover();
+			}
 		}
+	}
+	
+	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
+		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
+		Rectangle r1= entidad_1.getLabel().getBounds();
+		r1.height/=2.15;
+		r1.width/=2;
+		Rectangle r2= entidad_2.getLabel().getBounds();
+		r2.height/=2.15;
+		r2.width/=2;
+		return r1.intersects(r2);
 	}
 	
 	public Entidad getPersonaje() {

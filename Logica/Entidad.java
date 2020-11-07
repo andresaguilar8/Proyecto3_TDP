@@ -5,11 +5,15 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 
+import Enemigo.Alpha;
+import Visitor.Visitor;
+
 public abstract class Entidad  {
 
 	protected JLabel label;
 	protected int cargaViral;
 	protected Juego juego;
+	protected Visitor visitor;
 	
 	public Entidad(int x, int y) {
 		label = new JLabel();
@@ -45,9 +49,17 @@ public abstract class Entidad  {
 		this.juego = juego;
 	}
 	
+	public void colisionar(Entidad e) {
+		e.aceptar(visitor);
+	}
+	
+	public abstract void aceptar(Visitor visitor);
+	
 	public abstract void mover();
 
 	public abstract void keyPressed(KeyEvent arg0);
 
 	public abstract void keyReleased(KeyEvent arg0);
+
+	public abstract void atacar(Entidad e);
 }

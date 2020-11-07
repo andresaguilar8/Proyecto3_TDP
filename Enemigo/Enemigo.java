@@ -3,6 +3,8 @@ package Enemigo;
 import Logica.Entidad;
 import Logica.Estado;
 import Logica.Strategy;
+import Visitor.Visitor;
+import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Entidad{
 
@@ -13,6 +15,7 @@ public abstract class Enemigo extends Entidad{
 	public Enemigo(int x, int y) {
 		super(x, y);
 		velocidad = 1;
+		visitor = new VisitorEnemigo(this);
 	}
 
 	public void mover() {
@@ -37,6 +40,10 @@ public abstract class Enemigo extends Entidad{
 
     public void recibirCura(int cura) {
     	cargaViral-=cura;
+    }
+    
+    public void aceptar (Visitor visitor) {
+    	visitor.visitar(this);
     }
     
     public abstract Enemigo clonar();

@@ -5,12 +5,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 import Logica.Entidad;
+import Visitor.Visitor;
 
 public class Beta extends Enemigo {
 
 	public Beta(int x, int y) {
 		super(x, y);
-		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaExplotaGif.gif")));
+		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
 		label.setBounds(x, y, 117 , 110);
 	}
 
@@ -44,4 +45,5 @@ public class Beta extends Enemigo {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

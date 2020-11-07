@@ -6,6 +6,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.VisitorPersonaje;
+
 public class Personaje extends Entidad {
 	
 	private int cargaViral;
@@ -18,6 +21,7 @@ public class Personaje extends Entidad {
 		this.label.setSize(100, 100);
 		cargaViral = 0;
 		velocidad = 10;
+		visitor = new VisitorPersonaje(this);
 	}
 	
 	public int getCargaViral() {
@@ -105,5 +109,18 @@ public class Personaje extends Entidad {
 				break;	
         }
         this.mover();
-    } 
+    }
+
+	public void aceptar(Visitor visitor) {
+		System.out.println("aceptando");
+		visitor.visitar(this);
+	}
+
+	@Override
+	public void atacar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("jugador atacando al enemigo");
+		
+	} 
 }
