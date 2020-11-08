@@ -3,6 +3,7 @@ package Lanzamiento;
 import java.awt.event.KeyEvent;
 
 import Logica.Entidad;
+import Logica.Personaje;
 import Visitor.Visitor;
 import Visitor.VisitorLanzamientoEnemigo;
 
@@ -10,8 +11,10 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	public LanzamientoEnemigo(int cargaViral, int x, int y) {
 		super(cargaViral, x, y);
-		velocidad = 3;
+		velocidad = 2;
+		this.label.setSize(4, 4);
 		this.visitor = new VisitorLanzamientoEnemigo(this);
+		cargaViral = 100;
 	}
 
 	@Override
@@ -39,7 +42,20 @@ public class LanzamientoEnemigo extends Lanzamiento {
 	}
 
 	@Override
-	public void atacar(Entidad e) {
+	public void atacar(Entidad p) {
+		p.recibirCargaViral(10);
+		this.setCargaViral(0);
+		System.out.println("lanzamiento generando carga viral");
+	}
+
+	@Override
+	public void reaparecer(int xAux, int yAux) {
+		
+		
+	}
+
+	@Override
+	public void recibirCargaViral(int i) {
 		// TODO Auto-generated method stub
 		
 	}

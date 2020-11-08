@@ -10,9 +10,12 @@ public class LanzamientoAliado extends Lanzamiento{
 
 	public LanzamientoAliado(int cargaViral, int x, int y) {
 		super(cargaViral, x, y);
-		velocidad = 15;
+		velocidad = 2;
+		this.label.setSize(4, 4);
 		this.visitor = new VisitorLanzamientoAliado(this);
+		cargaViral = 100;
 	}
+	
 	@Override
 	public void aceptar(Visitor visitor) {
 		visitor.visitar(this);
@@ -39,6 +42,16 @@ public class LanzamientoAliado extends Lanzamiento{
 
 	@Override
 	public void atacar(Entidad e) {
+		e.recibirCura(100);		
+	}
+	
+	@Override
+	public void reaparecer(int xAux, int yAux) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void recibirCargaViral(int i) {
 		// TODO Auto-generated method stub
 		
 	}

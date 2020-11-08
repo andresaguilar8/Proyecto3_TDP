@@ -1,6 +1,7 @@
 package Lanzamiento;
 
 import Logica.Entidad;
+import Logica.Personaje;
 
 public abstract class Lanzamiento extends Entidad{
 
@@ -10,5 +11,6 @@ public abstract class Lanzamiento extends Entidad{
 		super(x, y);
 		this.cargaViral = cargaViral;
 	}
+	
 
 }

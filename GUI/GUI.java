@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Logica.Entidad;
 import Logica.Juego;
 
 public class GUI extends JFrame {
@@ -79,5 +80,11 @@ public class GUI extends JFrame {
 		});
 	}
 		
+	public void eliminarEnemigo(Entidad aEliminar) {
+		panelJuego.remove(aEliminar.getLabel());
+		repaint();
+	}
+	
+	
 }
 		

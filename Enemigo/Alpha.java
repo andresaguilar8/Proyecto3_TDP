@@ -15,6 +15,7 @@ public class Alpha extends Enemigo {
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
 		label.setBounds(x, y, 117, 110);
 		visitor = new VisitorPersonaje(this);
+		cargaViral = 100;
 	}
 	
 	public void mover() {
@@ -42,6 +43,18 @@ public class Alpha extends Enemigo {
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		
+	}
+
+	@Override
+	public void reaparecer(int xAux, int yAux) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recibirCargaViral(int i) {
+		// TODO Auto-generated method stub
 		
 	}
 

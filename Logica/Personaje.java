@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Lanzamiento.Arma;
+import Lanzamiento.ArmaAliado;
+import Lanzamiento.LanzamientoAliado;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
 
@@ -16,21 +18,26 @@ public class Personaje extends Entidad {
 	protected int desplazamientoX;
 	protected int velocidad;
 	protected Arma arma;
+	protected volatile boolean disparar;
+	protected int contador;
 
 	public Personaje(int x, int y) {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
-		this.label.setSize(100, 100);
+		this.label.setSize(90, 90);
 		cargaViral = 0;
 		velocidad = 10;
 		visitor = new VisitorPersonaje(this);
+		arma = new ArmaAliado();
+		disparar = false;
+		contador = 0;
 	}
 	
 	public int getCargaViral() {
 		return cargaViral;
 	} 
 
-	public void aumentarCargaViral(int carga) {
+	public void recibirCargaViral(int carga) {
 		cargaViral+=carga;
 	}
 	
@@ -43,19 +50,16 @@ public class Personaje extends Entidad {
 	}
 
 	public void moverDerecha() {
-		System.out.println("jugador moviendo a derecha");
 		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata derecha/caminataDerecha1.gif")));
 		this.mover();
 	}
 	
 	public void moverIzquierda() {
-		System.out.println("jugador moviendo a izquierda");
 		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata izquierda/caminataIzquierda1.gif")));
 		this.mover();
 	}
 	
 	public void mover() {
-		System.out.println("jugador moviendo");
 		Point pos = this.getPosicion();
 		
 		
@@ -70,39 +74,29 @@ public class Personaje extends Entidad {
 //        this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 	}
 	
-//	public void disparar() {
-//		contador++;
-//		if(contador>=arma.getCadencia() && disparar) {
-//			DisparoJugador disparo= arma.crearDisparo(jugador.getPos());
-//			juego.agregarEntidad(disparo);
-//			contador=0;
-//		}
-//	}
+
+	
 	public void keyPressed(KeyEvent e) {
 	    int key = e.getKeyCode();
 	    switch (key){
-	        //case KeyEvent.VK_SPACE :
-	        	//disparar=true;
-	        	//break;
-			case KeyEvent.VK_LEFT : {
+	        case KeyEvent.VK_SPACE : 
+	        	disparar = true;
+	        	break;
+			case KeyEvent.VK_LEFT : 
 				desplazamientoX = - velocidad;
-				this.moverIzquierda();
 				break;
-			}
-			case KeyEvent.VK_RIGHT : {
+			case KeyEvent.VK_RIGHT : 
 				desplazamientoX = velocidad;
-				this.moverDerecha();
 				break;
-			}
-	    }
+		}
     }
+	
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println("asdsad: "+key);
         switch (key){
-        	//case KeyEvent.VK_SPACE :
-        		//disparar=false;
-        		//break;
+        	case KeyEvent.VK_SPACE :
+        		disparar = false;
+        		break;
 			case KeyEvent.VK_LEFT : 
 				desplazamientoX = 0;
 				break;
@@ -110,7 +104,6 @@ public class Personaje extends Entidad {
 				desplazamientoX = 0;
 				break;	
         }
-        this.mover();
     }
 
 	public void aceptar(Visitor visitor) {
@@ -118,8 +111,22 @@ public class Personaje extends Entidad {
 		visitor.visitar(this);
 	}
 
-	@Override
 	public void atacar(Entidad e) {
-		System.out.println("jugador atacando al enemigo");
-	} 
+		contador++;
+		if(contador >= 20 && disparar) {
+			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), 20));
+			contador = 0;
+			System.out.println("jugador atacando");
+		}
+	}
+	
+	@Override
+	public void reaparecer(int xAux, int yAux) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 }

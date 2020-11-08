@@ -1,15 +1,14 @@
 package Enemigo;
 
 import Logica.Entidad;
+
 import Logica.Estado;
-import Logica.Strategy;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Entidad{
 
 	protected int velocidad;
-	protected Strategy estrategia;
 	protected Estado estado;
 	
 	public Enemigo(int x, int y) {
@@ -39,7 +38,7 @@ public abstract class Enemigo extends Entidad{
     }
 
     public void recibirCura(int cura) {
-    	cargaViral-=cura;
+    	cargaViral -= cura;
     }
     
     public void aceptar (Visitor visitor) {

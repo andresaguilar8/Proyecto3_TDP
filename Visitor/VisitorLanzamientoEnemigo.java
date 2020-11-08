@@ -16,8 +16,8 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 	
 	@Override
 	public void visitar(Personaje e) {
-		// TODO Auto-generated method stub
-
+		miEntidad.atacar(e);
+		System.out.println("enemigo recibiendo cura");
 	}
 
 	@Override

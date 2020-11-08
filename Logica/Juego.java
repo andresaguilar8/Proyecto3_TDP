@@ -1,5 +1,6 @@
 package Logica;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
@@ -14,7 +15,7 @@ import Mapa.MapaUno;
 public class Juego {
 
 	public GUI gui;
-	public LinkedList<Entidad> listaEntidades, entidadesPendientes;
+	public LinkedList<Entidad> listaEntidades, entidadesPendientes, entidadesAeliminar;
 	public Mapa mapa;
 	private HiloTiempo tiempo;
 	protected Personaje personaje;
@@ -24,6 +25,7 @@ public class Juego {
 		this.mapa = new MapaUno(this);
 		listaEntidades= new LinkedList<Entidad>();
 		entidadesPendientes = new LinkedList<Entidad>();
+		entidadesAeliminar = new LinkedList<Entidad>();
 		iniciarEntidades();
 		inicializarPersonaje();
 	}
@@ -48,7 +50,7 @@ public class Juego {
 	
 	public void agregarEntidades() {
 		for(Entidad e: entidadesPendientes) {
-			//listaEntidades.addLast(e);
+			listaEntidades.addLast(e);
 			gui.agregarEntidad(e.getLabel());
 		}
 		entidadesPendientes.clear();
@@ -64,63 +66,27 @@ public class Juego {
 	}
 	
 	public void colisionar() {
+		int xAux, yAux;
 		boolean collidedGeneral = false;
 		for (int i = 0; i < listaEntidades.size(); i++) {
 			Entidad entidad_1 = listaEntidades.get(i);
-			
-				if (colisionanEnColumna(entidad_1, personaje)) {
+				if(verificarColision(entidad_1,personaje)) {
 					entidad_1.colisionar(personaje);
-					System.out.println("se intersectan en columna");
-//					entidad_1.atacar(personaje);
-				}
-				else
-					if (verificarColision(entidad_1, personaje)) {
-						entidad_1.colisionar(personaje);
-						collidedGeneral = true;
-						System.out.println("se intersectan");
-					}
-						
-					if (!collidedGeneral)
-						entidad_1.mover();
-					collidedGeneral = false;
-			}
-			
-			for (int j = 0; j < entidadesPendientes.size(); j++) {
-				Entidad entidad = entidadesPendientes.get(j);
-//				entidad.mover();
-				//if (verificarColision(entidad, personaje)) {
-					//entidad.colisionar(personaje);
-					//System.out.println("entidad pendiente colisiono con el jugador");
-				//}
+					collidedGeneral=true;
+				}				
 
+			if(!collidedGeneral) {
+				entidad_1.mover();
 			}
-			
-				
-//			if (verificarColision(entidad_1, personaje)) {
-//						entidad_1.colisionar(personaje);
-//						//personaje.colisionar(entidad_1);
-//						collidedGeneral = true;
-//			}	
-						
-			//System.out.println(listaEntidades.size());
-//			if(!collidedGeneral) {
-//				entidad_1.mover();
-//			}
-			
+			if (entidad_1.getPosicion().y > 480 ) {
+				System.out.println("paso los 480");
+				Point posicion = this.mapa.posicionAleatoriaEnemigos();
+				entidad_1.reaparecer(posicion.x, posicion.y);
+			}
+			collidedGeneral = false;
 		}
-	
-
-	private boolean colisionanEnColumna(Entidad entidad_1, Entidad entidad_2) {
-		Rectangle r1 = entidad_1.getLabel().getBounds();
-		Rectangle r2 = entidad_2.getLabel().getBounds();
-		r1.height += 500;
-		if (r1.intersects(r2)) {
-			System.out.println("se intersectan");
-			return true;
-		}
-		else
-			return false;
 	}
+
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
@@ -132,6 +98,26 @@ public class Juego {
 		r2.width/=2;
 		return r1.intersects(r2);
 	}
+	
+	public void eliminarEntidades() {
+		for(Entidad e: listaEntidades) {     
+			if(e.getCargaViral() <= 0) {
+				entidadesAeliminar.add(e);
+			}
+		}
+		eliminarAux(entidadesAeliminar);
+	}
+	
+	private void eliminarAux(LinkedList<Entidad> lista) {
+		LinkedList<Entidad> aux= (LinkedList<Entidad>) entidadesAeliminar.clone();
+		entidadesAeliminar = new LinkedList<Entidad>();
+		for(Entidad e: aux) {
+			gui.eliminarEnemigo(e);
+			mapa.eliminarEnemigo(e);
+			listaEntidades.remove(e);
+		}
+		entidadesAeliminar.clear();
+}
 	
 	public Entidad getPersonaje() {
 		return personaje;

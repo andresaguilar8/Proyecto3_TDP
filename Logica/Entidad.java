@@ -63,5 +63,9 @@ public abstract class Entidad  {
 
 	public abstract void atacar(Entidad e);
 
+	public abstract void reaparecer(int xAux, int yAux);
+
+	public abstract void recibirCargaViral(int i);
+
 
 }

@@ -22,8 +22,7 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	@Override
 	public void visitar(Alpha a) {
-		// TODO Auto-generated method stub
-
+		a.recibirCura(10);
 	}
 
 	@Override

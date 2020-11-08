@@ -94,17 +94,24 @@ public abstract class Mapa {
 	public Point posicionAleatoriaEnemigos() {
 		Random ranX = new Random();
 		Random ranY = new Random();
+		Random ranAux = new Random();
 		
 		int x = ranX.nextInt(4);
 		int y = ranY.nextInt(500);
+		int aux = ranAux.nextInt(3);
 		
 		Point punto = new Point(x*100, y);
+//		Point punto = new Point(x*100, y*aux);
 		
 		return punto;
 	}
 	
 	public boolean dentroDeGrilla(Entidad elem) {
 		return elem.getPosicion().y>180 && elem.getPosicion().y<515 ;
+	}
+	
+	public void eliminarEnemigo(Entidad aEliminar) {
+		listaEnemigos.remove(aEliminar);
 	}
 	
 }
