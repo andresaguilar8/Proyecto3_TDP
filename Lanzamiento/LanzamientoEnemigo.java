@@ -14,13 +14,11 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		velocidad = 2;
 		this.label.setSize(4, 4);
 		this.visitor = new VisitorLanzamientoEnemigo(this);
-		cargaViral = 100;
+		cargaViral = 10;
 	}
 
-	@Override
 	public void aceptar(Visitor visitor) {
-		visitor.visitar(this);
-		
+		visitor.visitar(this);		
 	}
 
 	public void mover() {
@@ -43,9 +41,9 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	@Override
 	public void atacar(Entidad p) {
-		p.recibirCargaViral(10);
-		this.setCargaViral(0);
-		System.out.println("lanzamiento generando carga viral");
+//		p.recibirCargaViral(10);
+//		this.setCargaViral(0);
+//		System.out.println("lanzamiento generando carga viral");
 	}
 
 	@Override
@@ -59,5 +57,24 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void infectar(Entidad e) {
+		e.recibirCargaViral(10);
+		this.setCargaViral(0);
+		System.out.println("carga viral del jugador: "+e.getCargaViral());
+	}
+
+	public void lanzar(Entidad e) {
+		e.recibirCargaViral(10);
+		System.out.println("lanzamiento enemigo infectando al personaje");
+		this.cargaViral = 0;
+	}
+
+	@Override
+	public void curar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 }

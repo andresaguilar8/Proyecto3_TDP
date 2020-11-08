@@ -16,8 +16,8 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 	
 	@Override
 	public void visitar(Personaje e) {
-		miEntidad.atacar(e);
-		System.out.println("enemigo recibiendo cura");
+		miEntidad.lanzar(e);
+		System.out.println("enemigo infectando al jugador");
 	}
 
 	@Override

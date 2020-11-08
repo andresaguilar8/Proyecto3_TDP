@@ -58,6 +58,24 @@ public class Alpha extends Enemigo {
 		
 	}
 
+	@Override
+	public void infectar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void lanzar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void curar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

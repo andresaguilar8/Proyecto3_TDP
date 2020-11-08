@@ -66,6 +66,11 @@ public class Juego {
 	}
 	
 	public void colisionar() {
+		colisionarConPersonaje();
+		colisionarEnemigosConLanzamientos();
+	}
+	
+	private void colisionarConPersonaje() {
 		int xAux, yAux;
 		boolean collidedGeneral = false;
 		for (int i = 0; i < listaEntidades.size(); i++) {
@@ -74,21 +79,35 @@ public class Juego {
 					entidad_1.colisionar(personaje);
 					collidedGeneral=true;
 				}				
-
+				
 			if(!collidedGeneral) {
 				entidad_1.mover();
 			}
 			if (entidad_1.getPosicion().y > 480 ) {
-				System.out.println("paso los 480");
+				//System.out.println("paso los 480");
 				Point posicion = this.mapa.posicionAleatoriaEnemigos();
 				entidad_1.reaparecer(posicion.x, posicion.y);
 			}
 			collidedGeneral = false;
 		}
 	}
-
 	
-	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
+	private void colisionarEnemigosConLanzamientos() {
+		for(int i=0; i<listaEntidades.size();i++) {
+			boolean collidedGeneral = false;
+			Entidad entidad_1 = listaEntidades.get(i);
+			for(int j = 0; j < listaEntidades.size();j++) {
+				Entidad entidad_2 = listaEntidades.get(j);
+				if(entidad_1 != entidad_2 && verificarColision(entidad_1 ,entidad_2)) {
+					entidad_1.colisionar(entidad_2);
+					collidedGeneral=true;
+				}				
+			}
+			if(!collidedGeneral) {
+				entidad_1.mover();
+			}
+		}
+	}	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
 		Rectangle r1= entidad_1.getLabel().getBounds();
 		r1.height/=2.15;
@@ -100,6 +119,10 @@ public class Juego {
 	}
 	
 	public void eliminarEntidades() {
+		if (this.personaje.getCargaViral() >= 100) {
+			entidadesAeliminar.add(personaje);
+		}
+		
 		for(Entidad e: listaEntidades) {     
 			if(e.getCargaViral() <= 0) {
 				entidadesAeliminar.add(e);

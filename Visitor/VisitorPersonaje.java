@@ -29,8 +29,7 @@ public class VisitorPersonaje extends Visitor {
 
 	@Override
 	public void visitar(Personaje e) {
-		miEntidad.atacar(e);
-		System.out.println("visitar (Personaje e)");
+
 	}
 
 	@Override

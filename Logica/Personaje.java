@@ -18,7 +18,7 @@ public class Personaje extends Entidad {
 	protected int desplazamientoX;
 	protected int velocidad;
 	protected Arma arma;
-	protected volatile boolean disparar;
+	protected volatile boolean curar;
 	protected int contador;
 
 	public Personaje(int x, int y) {
@@ -29,7 +29,7 @@ public class Personaje extends Entidad {
 		velocidad = 10;
 		visitor = new VisitorPersonaje(this);
 		arma = new ArmaAliado();
-		disparar = false;
+		curar = false;
 		contador = 0;
 	}
 	
@@ -38,7 +38,7 @@ public class Personaje extends Entidad {
 	} 
 
 	public void recibirCargaViral(int carga) {
-		cargaViral+=carga;
+		cargaViral += carga;
 	}
 	
 	public void desinfectar(Entidad e) {
@@ -80,7 +80,7 @@ public class Personaje extends Entidad {
 	    int key = e.getKeyCode();
 	    switch (key){
 	        case KeyEvent.VK_SPACE : 
-	        	disparar = true;
+	        	curar = true;
 	        	break;
 			case KeyEvent.VK_LEFT : 
 				desplazamientoX = - velocidad;
@@ -95,7 +95,7 @@ public class Personaje extends Entidad {
         int key = e.getKeyCode();
         switch (key){
         	case KeyEvent.VK_SPACE :
-        		disparar = false;
+        		curar = false;
         		break;
 			case KeyEvent.VK_LEFT : 
 				desplazamientoX = 0;
@@ -107,13 +107,12 @@ public class Personaje extends Entidad {
     }
 
 	public void aceptar(Visitor visitor) {
-		System.out.println("aceptando");
 		visitor.visitar(this);
 	}
 
-	public void atacar(Entidad e) {
+	public void lanzar(Entidad e) {
 		contador++;
-		if(contador >= 20 && disparar) {
+		if(contador >= 20 && curar) {
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), 20));
 			contador = 0;
 			System.out.println("jugador atacando");
@@ -125,6 +124,27 @@ public class Personaje extends Entidad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void infectar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void atacar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void curar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 
 

@@ -42,7 +42,7 @@ public class LanzamientoAliado extends Lanzamiento{
 
 	@Override
 	public void atacar(Entidad e) {
-		e.recibirCura(100);		
+
 	}
 	
 	@Override
@@ -52,6 +52,25 @@ public class LanzamientoAliado extends Lanzamiento{
 	}
 	@Override
 	public void recibirCargaViral(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void infectar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void lanzar(Entidad e) {
+		e.recibirCura(20);
+		System.out.println("enemigo recibiendo cura");
+		this.cargaViral = 0;
+	}
+
+	@Override
+	public void curar(Entidad e) {
 		// TODO Auto-generated method stub
 		
 	}

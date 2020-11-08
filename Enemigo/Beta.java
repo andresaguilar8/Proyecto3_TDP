@@ -29,11 +29,11 @@ public class Beta extends Enemigo {
 	public void mover() {
         super.mover();
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
-        atacar(null);
+        lanzar(this.juego.getPersonaje());
 	}
 
-    public void atacar(Entidad e) {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+    public void lanzar(Entidad e) {
+        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
         
         contador++;
 		if(contador >= 70) {
@@ -42,6 +42,11 @@ public class Beta extends Enemigo {
 		}
     }
 
+	public void infectar(Entidad e) {
+		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+		e.recibirCargaViral(1);
+	}
+	
     public void parar() {
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaParado.png")));
     }
@@ -74,5 +79,19 @@ public class Beta extends Enemigo {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void atacar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void curar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

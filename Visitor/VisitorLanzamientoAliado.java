@@ -22,17 +22,22 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	@Override
 	public void visitar(Alpha a) {
-		a.recibirCura(10);
+		miEntidad.lanzar(a);
+		a.recibirCura(100);
+		System.out.println("Alpha recibiendo cura");
 	}
 
 	@Override
 	public void visitar(Beta b) {
-		// TODO Auto-generated method stub
-
+		miEntidad.lanzar(b);
+		b.recibirCura(100);
+		System.out.println("Beta recibiendo cura");
 	}
 
 	@Override
 	public void visitar(Enemigo enemigo) {
+		miEntidad.lanzar(enemigo);
+		System.out.println("Visitar Enemigo enemigo");
 		// TODO Auto-generated method stub
 
 	}

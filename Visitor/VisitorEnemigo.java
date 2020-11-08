@@ -15,10 +15,9 @@ public class VisitorEnemigo extends Visitor {
 	}
 	
 	@Override
-	public void visitar(Personaje p) 
-	{
-		miEntidad.atacar(p);
-		System.out.println("enemigo atacando a personaje");
+	public void visitar(Personaje p) {
+		miEntidad.infectar(p);
+		System.out.println("enemigo infectando al personaje");
 	}
 
 	@Override
@@ -50,9 +49,6 @@ public class VisitorEnemigo extends Visitor {
 		
 	}
 	
-//	public void visitar(Premio b) 
-//	{
-//		entidad.atacar(b);
-//	}
+
 	
 }
