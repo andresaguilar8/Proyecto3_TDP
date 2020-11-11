@@ -15,7 +15,7 @@ import Mapa.MapaUno;
 public class Juego {
 
 	public GUI gui;
-	public LinkedList<Entidad> listaEntidades, entidadesPendientes, entidadesAeliminar;
+	public LinkedList<Entidad> listaEntidades, entidadesPendientes, entidadesAeliminar, listaLanzamientos, lanzamientosPendientes;
 	public Mapa mapa;
 	private HiloTiempo tiempo;
 	protected Personaje personaje;
@@ -26,6 +26,8 @@ public class Juego {
 		listaEntidades= new LinkedList<Entidad>();
 		entidadesPendientes = new LinkedList<Entidad>();
 		entidadesAeliminar = new LinkedList<Entidad>();
+		lanzamientosPendientes = new LinkedList<Entidad>();
+		listaLanzamientos = new LinkedList<Entidad>();
 		iniciarEntidades();
 		inicializarPersonaje();
 	}
@@ -107,7 +109,9 @@ public class Juego {
 				entidad_1.mover();
 			}
 		}
-	}	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
+	}	
+	
+	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
 		Rectangle r1= entidad_1.getLabel().getBounds();
 		r1.height/=2.15;
@@ -119,9 +123,9 @@ public class Juego {
 	}
 	
 	public void eliminarEntidades() {
-		if (this.personaje.getCargaViral() >= 100) {
-			entidadesAeliminar.add(personaje);
-		}
+		//if (this.personaje.getCargaViral() >= 100) {
+			//entidadesAeliminar.add(personaje);
+		//}
 		
 		for(Entidad e: listaEntidades) {     
 			if(e.getCargaViral() <= 0) {
@@ -140,7 +144,25 @@ public class Juego {
 			listaEntidades.remove(e);
 		}
 		entidadesAeliminar.clear();
-}
+	}
+	
+	public LinkedList<Entidad> getListaEntidades() {
+		for (Entidad e: listaEntidades)
+			System.out.println("Lista entidades: "+e);
+		return listaEntidades;
+	}
+	
+	public LinkedList<Entidad> getListaEntidadesPendientes() {
+		for (Entidad e: entidadesPendientes)
+			System.out.println("Lista entidades pendientes: "+e);
+		return entidadesPendientes;
+	}
+	
+	public LinkedList<Entidad> getListaEntidadesAeliminar() {
+		for (Entidad e: entidadesAeliminar)
+			System.out.println("Lista entidades a eliminar: "+e);
+		return entidadesAeliminar;
+	}
 	
 	public Entidad getPersonaje() {
 		return personaje;

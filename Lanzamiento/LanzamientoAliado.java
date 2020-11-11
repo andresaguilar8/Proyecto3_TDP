@@ -2,6 +2,8 @@ package Lanzamiento;
 
 import java.awt.event.KeyEvent;
 
+import Enemigo.Alpha;
+import Enemigo.Beta;
 import Logica.Entidad;
 import Visitor.Visitor;
 import Visitor.VisitorLanzamientoAliado;
@@ -41,11 +43,6 @@ public class LanzamientoAliado extends Lanzamiento{
 	}
 
 	@Override
-	public void atacar(Entidad e) {
-
-	}
-	
-	@Override
 	public void reaparecer(int xAux, int yAux) {
 		// TODO Auto-generated method stub
 		
@@ -55,22 +52,39 @@ public class LanzamientoAliado extends Lanzamiento{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void infectar(LanzamientoEnemigo e) {
+		e.recibirCura(100);
+	}
+	
+	public void infectar(Alpha a) {
+		a.recibirCura(100);
+		System.out.println("alpha recibiendo cura");
+	}
+	
+	public void infectar(Beta b) {
+		b.recibirCura(100);
+		System.out.println("beta recibiendo cura");
+	}
+	
+	public void lanzar(LanzamientoEnemigo l) {
+	}
+	
 	@Override
-	public void infectar(Entidad e) {
+	public void lanzar(Entidad e) {
+		e.recibirCura(100);
+		System.out.println("enemigo recibiendo cura");
+		this.cargaViral = 0;
+	}
+	
+	@Override
+	public void curar(Entidad e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void lanzar(Entidad e) {
-		e.recibirCura(20);
-		System.out.println("enemigo recibiendo cura");
-		this.cargaViral = 0;
-	}
-
-	@Override
-	public void curar(Entidad e) {
+	public void infectar(Entidad e) {
 		// TODO Auto-generated method stub
 		
 	}

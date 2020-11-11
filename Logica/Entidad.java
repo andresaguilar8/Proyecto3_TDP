@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 
 import Enemigo.Alpha;
+import Lanzamiento.LanzamientoEnemigo;
 import Visitor.Visitor;
 
 public abstract class Entidad  {
@@ -42,7 +43,7 @@ public abstract class Entidad  {
 	}
 
 	public void recibirCura(int cura) {
-		
+		this.cargaViral -= cura;
 	}
 	
 	public void setJuego(Juego juego) {
@@ -61,8 +62,6 @@ public abstract class Entidad  {
 
 	public abstract void keyReleased(KeyEvent arg0);
 
-	public abstract void atacar(Entidad e);
-
 	public abstract void reaparecer(int xAux, int yAux);
 
 	public abstract void recibirCargaViral(int i);
@@ -70,7 +69,7 @@ public abstract class Entidad  {
 	public abstract void infectar(Entidad e);
 
 	public abstract void lanzar(Entidad e);
-
+	
 	public abstract void curar(Entidad e);
 
 

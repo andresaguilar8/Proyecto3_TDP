@@ -44,14 +44,13 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	@Override
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
-		// TODO Auto-generated method stub
-
+		System.out.println("asasasas");
+		miEntidad.lanzar(lanzamientoEnemigo);
 	}
 
 }

@@ -27,26 +27,15 @@ public class LanzamientoEnemigo extends Lanzamiento {
 //			this.vida=0;
 	}
 
-	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void atacar(Entidad p) {
-//		p.recibirCargaViral(10);
-//		this.setCargaViral(0);
-//		System.out.println("lanzamiento generando carga viral");
-	}
 
-	@Override
 	public void reaparecer(int xAux, int yAux) {
 		
 		
@@ -75,6 +64,7 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 
 }

@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Lanzamiento.Arma;
 import Lanzamiento.ArmaEnemigo;
+import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
@@ -80,11 +81,6 @@ public class Beta extends Enemigo {
 		
 	}
 
-	@Override
-	public void atacar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void curar(Entidad e) {

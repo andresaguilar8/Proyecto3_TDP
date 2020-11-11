@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
@@ -75,6 +76,8 @@ public class Alpha extends Enemigo {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 
 

@@ -24,6 +24,9 @@ public class HiloTiempo extends Thread{
 			juego.agregarEntidades();
 			juego.eliminarEntidades();
 			juego.colisionar();
+			//juego.getListaEntidades();
+			//juego.getListaEntidadesAeliminar();
+			//juego.getListaEntidadesPendientes();
 			//juego.verificarMapa();
 		}
 	}

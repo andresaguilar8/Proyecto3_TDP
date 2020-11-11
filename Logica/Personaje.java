@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import Lanzamiento.Arma;
 import Lanzamiento.ArmaAliado;
 import Lanzamiento.LanzamientoAliado;
+import Lanzamiento.LanzamientoEnemigo;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
 
@@ -75,6 +76,39 @@ public class Personaje extends Entidad {
 	}
 	
 
+
+	public void aceptar(Visitor visitor) {
+		visitor.visitar(this);
+	}
+
+	public void lanzar(Entidad e) {
+		contador++;
+		if(contador >= 20 && curar) {
+			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), 20));
+			contador = 0;
+			System.out.println("jugador atacando");
+		}
+	}
+	
+	@Override
+	public void reaparecer(int xAux, int yAux) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void infectar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void curar(Entidad e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	public void keyPressed(KeyEvent e) {
 	    int key = e.getKeyCode();
@@ -105,45 +139,6 @@ public class Personaje extends Entidad {
 				break;	
         }
     }
-
-	public void aceptar(Visitor visitor) {
-		visitor.visitar(this);
-	}
-
-	public void lanzar(Entidad e) {
-		contador++;
-		if(contador >= 20 && curar) {
-			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), 20));
-			contador = 0;
-			System.out.println("jugador atacando");
-		}
-	}
-	
-	@Override
-	public void reaparecer(int xAux, int yAux) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void infectar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void atacar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 
 

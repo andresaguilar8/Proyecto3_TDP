@@ -40,8 +40,7 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 
 	@Override
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		// TODO Auto-generated method stub
-
+		miEntidad.recibirCura(100);
 	}
 
 	@Override
