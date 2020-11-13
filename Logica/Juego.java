@@ -95,20 +95,26 @@ public class Juego {
 	}
 	
 	private void colisionarEnemigosConLanzamientos() {
-		for(int i=0; i<listaEntidades.size();i++) {
+
+		for(int i = 0; i < listaEntidades.size(); i++) {	
 			boolean collidedGeneral = false;
 			Entidad entidad_1 = listaEntidades.get(i);
-			for(int j = 0; j < listaEntidades.size();j++) {
+			for(int j = 0; j < listaEntidades.size(); j++) {
 				Entidad entidad_2 = listaEntidades.get(j);
 				if(entidad_1 != entidad_2 && verificarColision(entidad_1 ,entidad_2)) {
 					entidad_1.colisionar(entidad_2);
-					collidedGeneral=true;
-				}				
+					collidedGeneral = true;
+				}	
+				if (entidad_1.getPosicion().y > 550) {
+					System.out.println("entidad paso los 500 de y");
+					entidad_1.accionar();
+				}
 			}
 			if(!collidedGeneral) {
 				entidad_1.mover();
 			}
 		}
+			
 	}	
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
@@ -132,6 +138,8 @@ public class Juego {
 				entidadesAeliminar.add(e);
 			}
 		}
+		//si la posicion es por debajo del personaje debo eliminar la entidad.
+		// metodo "accionar" que accione de acuerdo, si es un "enemigo" deberia re-aparecer.
 		eliminarAux(entidadesAeliminar);
 	}
 	

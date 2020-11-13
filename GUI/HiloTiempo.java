@@ -19,11 +19,12 @@ public class HiloTiempo extends Thread{
 				e.printStackTrace();
 			}		
 			
-			juego.getPersonaje().mover();
-			juego.getPersonaje().lanzar(null);
 			juego.agregarEntidades();
 			juego.eliminarEntidades();
 			juego.colisionar();
+			juego.getPersonaje().mover();
+			juego.getPersonaje().lanzar(null);
+
 			//juego.getListaEntidades();
 			//juego.getListaEntidadesAeliminar();
 			//juego.getListaEntidadesPendientes();

@@ -58,34 +58,31 @@ public class Beta extends Enemigo {
 	}
 
 	
-    @Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void reaparecer(int xAux, int yAux) {
 		this.setPosicion(xAux, yAux);
 	}
 
-	@Override
 	public void recibirCargaViral(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
 
-	@Override
 	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	public void accionar() {
+		super.accionar();
 	}
 
 

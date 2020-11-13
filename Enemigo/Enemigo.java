@@ -46,6 +46,10 @@ public abstract class Enemigo extends Entidad{
     	visitor.visitar(this);
     }
     
+    public void accionar() {
+    	System.out.println("enemigo acciona");
+    }
+    
     public abstract Enemigo clonar();
 	
 }

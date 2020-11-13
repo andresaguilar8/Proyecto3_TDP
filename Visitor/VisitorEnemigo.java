@@ -45,7 +45,8 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
-		// TODO Auto-generated method stub
+		miEntidad.mover();
+		System.out.println("enemigo visita lanzamiento");
 		
 	}
 	

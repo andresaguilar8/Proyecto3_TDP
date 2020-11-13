@@ -89,4 +89,10 @@ public class LanzamientoAliado extends Lanzamiento{
 		
 	}
 
+	@Override
+	public void accionar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

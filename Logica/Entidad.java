@@ -72,5 +72,6 @@ public abstract class Entidad  {
 	
 	public abstract void curar(Entidad e);
 
+	public abstract void accionar();
 
 }

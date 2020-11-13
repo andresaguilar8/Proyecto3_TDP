@@ -88,7 +88,7 @@ public abstract class Mapa {
 	public void ubicacionDefinitiva(Entidad nuevo) {
 		Rectangle rectangulo = nuevo.getLabel().getBounds();
 		System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
-		nuevo.setPosicion(rectangulo.x-rectangulo.width/2, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-350);
+		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+35, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-370);
 	}
 	
 	public Point posicionAleatoriaEnemigos() {
@@ -96,7 +96,7 @@ public abstract class Mapa {
 		Random ranY = new Random();
 		Random ranAux = new Random();
 		
-		int x = ranX.nextInt(4);
+		int x = ranX.nextInt(5);
 		int y = ranY.nextInt(500);
 		int aux = ranAux.nextInt(3);
 		

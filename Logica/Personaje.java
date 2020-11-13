@@ -26,8 +26,8 @@ public class Personaje extends Entidad {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 		this.label.setSize(90, 90);
-		cargaViral = 0;
-		velocidad = 10;
+		cargaViral = 1;
+		velocidad = 5;
 		visitor = new VisitorPersonaje(this);
 		arma = new ArmaAliado();
 		curar = false;
@@ -139,6 +139,12 @@ public class Personaje extends Entidad {
 				break;	
         }
     }
+
+	@Override
+	public void accionar() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 

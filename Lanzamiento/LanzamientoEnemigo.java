@@ -65,6 +65,11 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		
 	}
 
+	public void accionar() {
+		//seteo la carga viral del lanzamiento en 0 para que la lista lo remueva
+		this.setCargaViral(0);
+	}
+
 	
 
 }

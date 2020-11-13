@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
@@ -30,6 +31,8 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//SplashScreen splash = new SplashScreen(2000);
+					//splash.setVisible(true);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {

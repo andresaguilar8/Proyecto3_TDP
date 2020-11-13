@@ -77,6 +77,10 @@ public class Alpha extends Enemigo {
 		
 	}
 
+	public void accionar() {
+		super.accionar();
+	}
+
 	
 
 
