@@ -62,9 +62,12 @@ public abstract class Enemigo extends Entidad{
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(2) + 1;
 		PowerUp powerup=null;
+		System.out.println("lanza powerup");
 		switch(n) {
-			case 1: 
+			case 1: {
 				powerup= new Curacion(this.getPosicion().x,this.getPosicion().y);
+				System.out.println("powerup");
+			}
 				break;
 			case 2:
 				powerup= new Cuarentena(this.getPosicion().x,this.getPosicion().y);
@@ -72,6 +75,7 @@ public abstract class Enemigo extends Entidad{
 				
 		}
 		if(powerup!=null) {
+			System.out.println("powerup != null");
 			juego.agregarObjetos(powerup);
 		}
 	}

@@ -24,9 +24,7 @@ public class GUI extends JFrame {
 	protected HiloTiempo tiempo;
 	public static Dimension size = new Dimension(1250, 790);
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

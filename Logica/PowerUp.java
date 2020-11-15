@@ -3,6 +3,7 @@ package Logica;
 import java.awt.event.KeyEvent;
 
 import Visitor.Visitor;
+import Visitor.VisitorPowerUp;
 
 public class PowerUp extends Entidad {
 	
@@ -11,18 +12,20 @@ public class PowerUp extends Entidad {
 	public PowerUp(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
+		label.setBounds(x, y, 70, 70);
+		cargaViral = 10;
+		visitor = new VisitorPowerUp(this);
+		velocidad = 4;
 	}
 
 	@Override
 	public void aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		
+		visitor.visitar(this);
 	}
 
 	@Override
 	public void mover() {
-		// TODO Auto-generated method stub
-		
+		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
 	}
 
 	@Override
@@ -69,8 +72,7 @@ public class PowerUp extends Entidad {
 
 	@Override
 	public void accionar() {
-		// TODO Auto-generated method stub
-		
+		mover();
 	}
 
 }

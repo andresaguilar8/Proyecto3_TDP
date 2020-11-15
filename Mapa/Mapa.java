@@ -34,7 +34,7 @@ public abstract class Mapa {
 		for(int i = 0; i < cantEnemigos; i++) {
 			aux = ran.nextInt(2);
 			Entidad nuevo;
-			nuevo = enemigos[1].clonar();
+			nuevo = enemigos[aux].clonar();
 			Point lugar = posicionAleatoriaEnemigos();
 			nuevo.setPosicion(lugar.x, lugar.y);
 			ubicacionDefinitiva(nuevo);
@@ -112,6 +112,10 @@ public abstract class Mapa {
 	
 	public void eliminarEnemigo(Entidad aEliminar) {
 		listaEnemigos.remove(aEliminar);
+	}
+
+	public LinkedList<Entidad> getListaEnemigos() {
+		return listaEnemigos;
 	}
 	
 }

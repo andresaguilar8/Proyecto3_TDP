@@ -9,15 +9,17 @@ import Logica.Personaje;
 import Logica.PowerUp;
 import PowerUp.Cuarentena;
 
-public class VisitorCuracion extends Visitor {
+public class VisitorCuarentena extends Visitor {
 	
+	protected Cuarentena power;
 	
-	public VisitorCuracion() {
-		
+	public VisitorCuarentena(Cuarentena cuarentena) {
+		this.power = cuarentena;
 	}
 
 	@Override
 	public void visitar(Personaje e) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -33,10 +35,9 @@ public class VisitorCuracion extends Visitor {
 		
 	}
 
-	@Override
 	public void visitar(Enemigo enemigo) {
-		// TODO Auto-generated method stub
-		
+		power.agregarAMapeo(enemigo);
+		enemigo.setVelocidad(0);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class Juego {
 		for(Entidad e: listaEntidades) {
 			e.setJuego(this);
 			gui.agregarEntidad(e.getLabel());
-			System.out.println("iniciar entidades de juego");
+//			System.out.println("iniciar entidades de juego");
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class Juego {
 		personaje = new Personaje(200, 460);
 		personaje.setJuego(this);
 		gui.agregarEntidad(personaje.getLabel());
-		System.out.println("inicializar personaje");
+//		System.out.println("inicializar personaje");
 		//listaEntidades.add(personaje);
 	}
 	
@@ -106,7 +106,7 @@ public class Juego {
 					collidedGeneral = true;
 				}	
 				if (entidad_1.getPosicion().y > 550) {
-					System.out.println("entidad paso los 500 de y");
+//					System.out.println("entidad paso los 500 de y");
 					entidad_1.accionar();
 				}
 			}
@@ -154,6 +154,10 @@ public class Juego {
 		entidadesAeliminar.clear();
 	}
 	
+	public Mapa getMapa() {
+		return mapa;
+	}
+
 	public LinkedList<Entidad> getListaEntidades() {
 		for (Entidad e: listaEntidades)
 			System.out.println("Lista entidades: "+e);

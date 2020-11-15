@@ -9,11 +9,18 @@ import Logica.Personaje;
 import Logica.PowerUp;
 
 public class VisitorPowerUp extends Visitor {
+	
+	protected PowerUp powerUp;
 
+	public VisitorPowerUp(PowerUp p) {
+		powerUp = p;
+	}
+	
 	@Override
 	public void visitar(Personaje e) {
-		// TODO Auto-generated method stub
-		
+		powerUp.curar(e);
+		System.out.println("personaje curado");
+		powerUp.setCargaViral(0);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ public abstract class Entidad  {
 	protected int cargaViral;
 	protected Juego juego;
 	protected Visitor visitor;
+	int velocidad;
 	
 	public Entidad(int x, int y) {
 		label = new JLabel();
@@ -70,7 +71,9 @@ public abstract class Entidad  {
 
 	public abstract void lanzar(Entidad e);
 	
-	public abstract void curar(Entidad e);
+	public void curar(Entidad e) {
+		e.setCargaViral(0);
+	}
 
 	public abstract void accionar();
 
