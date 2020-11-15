@@ -5,37 +5,44 @@ import Enemigo.Beta;
 import Enemigo.Enemigo;
 import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
-import Logica.Entidad;
 import Logica.Personaje;
 import Logica.PowerUp;
 
-public class VisitorPersonaje extends Visitor {
-	
-	public VisitorPersonaje(Entidad e) {
-		miEntidad = e;
-	}
+public class VisitorPowerUp extends Visitor {
 
-	public void visitar(Enemigo e) {
-		
-	}
-	
-	public void visitar(Alpha a) {
-		
-	}
-	
-	public void visitar(Beta b) {
-		
-	}
-
+	@Override
 	public void visitar(Personaje e) {
-
-	}
-
-	public void visitar(LanzamientoAliado lanzamientoAliado) {
+		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public void visitar(Alpha a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(Beta b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(Enemigo enemigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(LanzamientoAliado lanzamientoAliado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -44,6 +51,5 @@ public class VisitorPersonaje extends Visitor {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }

@@ -7,6 +7,7 @@ import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
+import Logica.PowerUp;
 
 public class VisitorLanzamientoEnemigo extends Visitor {
 
@@ -38,6 +39,12 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		miEntidad.mover();
+	}
+
+	@Override
+	public void visitar(PowerUp p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

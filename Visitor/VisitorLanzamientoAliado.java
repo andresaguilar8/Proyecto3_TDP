@@ -7,6 +7,7 @@ import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
+import Logica.PowerUp;
 
 public class VisitorLanzamientoAliado extends Visitor {
 
@@ -51,6 +52,12 @@ public class VisitorLanzamientoAliado extends Visitor {
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		System.out.println("asasasas");
 		miEntidad.lanzar(lanzamientoEnemigo);
+	}
+
+	@Override
+	public void visitar(PowerUp p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

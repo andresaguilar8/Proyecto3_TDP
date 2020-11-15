@@ -7,6 +7,7 @@ import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Logica.Personaje;
+import Logica.PowerUp;
 
 public abstract class Visitor {	
 	
@@ -24,8 +25,6 @@ public abstract class Visitor {
 
 	public abstract void visitar(LanzamientoEnemigo lanzamientoEnemigo);
 	
-	//public void visitar(Proyectil p) {}
-	
-	//public void visitar(Premio p) {}
+	public abstract void visitar(PowerUp p);
 	
 }
