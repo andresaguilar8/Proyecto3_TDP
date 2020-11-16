@@ -19,6 +19,7 @@ import Logica.Juego;
 public class GUI extends JFrame {
 
 	protected JPanel contentPane;
+	protected JLabel etiquetaGradoDeInfeccion;
 	protected JPanelConFondo panelJuego;
 	protected Juego juego;
 	protected HiloTiempo tiempo;
@@ -54,10 +55,18 @@ public class GUI extends JFrame {
 		
 		panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_!.jpeg")).getImage());
 		contentPane.add(panelJuego);
+		
 		juego = new Juego(this);
 		tiempo = new HiloTiempo(juego);
 		juego.setTiempo(tiempo);
 		tiempo.start();
+		
+//		int numEntero = juego.getPersonaje().getCargaViral();   
+//	    String numCadena = numEntero+"asas";
+//		etiquetaGradoDeInfeccion = new JLabel(numCadena);
+//		etiquetaGradoDeInfeccion.setBounds(500, 100, 500, 500);
+//		panelJuego.add(etiquetaGradoDeInfeccion);
+		
 		
 		iniciarKeyListener();
 		
@@ -66,7 +75,6 @@ public class GUI extends JFrame {
 	public void agregarEntidad(JLabel nuevo) {
 		panelJuego.add(nuevo);
 		nuevo.setLocation(nuevo.getBounds().getLocation());
-//		contentPane.setComponentZOrder(nuevo, 0);
 		repaint();
 	}
 

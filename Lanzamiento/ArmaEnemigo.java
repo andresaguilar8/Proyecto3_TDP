@@ -12,5 +12,9 @@ public class ArmaEnemigo extends Arma {
 		lanzamiento.getLabel().setBounds(lanzamiento.getPosicion().x, lanzamiento.getPosicion().y, 30, 30);
 		return lanzamiento;
 	}
+
+	public void setImagenLanzamiento(String ruta) {
+		
+	}
 }
 

@@ -30,7 +30,7 @@ public class Cuarentena extends PowerUp implements Runnable {
 		}
 		
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		}
 		catch(InterruptedException e1) {
 			e1.printStackTrace();

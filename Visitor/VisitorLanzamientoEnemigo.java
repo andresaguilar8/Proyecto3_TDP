@@ -17,7 +17,6 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 	
 	public void visitar(Personaje e) {
 		miEntidad.lanzar(e);
-		System.out.println("enemigo infectando al jugador");
 	}
 
 	public void visitar(Alpha a) {
@@ -30,7 +29,6 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 
 	public void visitar(Enemigo enemigo) {
 		miEntidad.mover();
-		System.out.println("lanzamiento visita enemigo");
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {

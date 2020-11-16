@@ -159,8 +159,6 @@ public class Juego {
 	}
 
 	public LinkedList<Entidad> getListaEntidades() {
-		for (Entidad e: listaEntidades)
-			System.out.println("Lista entidades: "+e);
 		return listaEntidades;
 	}
 	
@@ -176,7 +174,7 @@ public class Juego {
 		return entidadesAeliminar;
 	}
 	
-	public Entidad getPersonaje() {
+	public Personaje getPersonaje() {
 		return personaje;
 	}
 	

@@ -18,36 +18,30 @@ public class LanzamientoAliado extends Lanzamiento{
 		cargaViral = 100;
 	}
 	
-	@Override
 	public void aceptar(Visitor visitor) {
 		visitor.visitar(this);
 		
 	}
 
-	@Override
 	public void mover() {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y - velocidad);
 		
 	}
 
-	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void reaparecer(int xAux, int yAux) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
 	public void recibirCargaViral(int i) {
 		// TODO Auto-generated method stub
 		

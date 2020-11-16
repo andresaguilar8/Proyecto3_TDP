@@ -18,7 +18,6 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public void visitar(Personaje p) {
 		miEntidad.infectar(p);
-		System.out.println("enemigo infectando al personaje");
 	}
 
 	@Override
@@ -47,7 +46,6 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		miEntidad.mover();
-		System.out.println("enemigo visita lanzamiento");
 		
 	}
 

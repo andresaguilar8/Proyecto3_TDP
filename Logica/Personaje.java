@@ -21,6 +21,8 @@ public class Personaje extends Entidad {
 	protected Arma arma;
 	protected volatile boolean curar;
 	protected int contador;
+	protected int poderDeDesinfeccion;
+	protected volatile String rutaLanzamiento;
 
 	public Personaje(int x, int y) {
 		super(x, y);
@@ -32,18 +34,36 @@ public class Personaje extends Entidad {
 		arma = new ArmaAliado();
 		curar = false;
 		contador = 0;
+		poderDeDesinfeccion = 100;
+		rutaLanzamiento = "/Imagenes/LanzamientoPersonajeGif.gif";
 	}
 	
 	public int getCargaViral() {
 		return cargaViral;
 	} 
-
+	
+	public void setRutaLanzamiento(String rutaLanzamiento) {
+		this.rutaLanzamiento = rutaLanzamiento;
+	}
+	
 	public void recibirCargaViral(int carga) {
 		cargaViral += carga;
 	}
 	
+	public void setPoderDeDesinfeccion(int valor) {
+		this.poderDeDesinfeccion = valor;
+	}
+	
+	public int getPoderDeDesinfeccion() {
+		return poderDeDesinfeccion;
+	}
+	
 	public void desinfectar(Entidad e) {
 		//e.recibirCura(10);
+	}
+	
+	public ArmaAliado getArma() {
+		return (ArmaAliado) arma;
 	}
 
 	public void setLabel(JLabel label) {
@@ -84,7 +104,8 @@ public class Personaje extends Entidad {
 	public void lanzar(Entidad e) {
 		contador++;
 		if(contador >= 20 && curar) {
-			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), 20));
+			arma.setImagenLanzamiento(rutaLanzamiento);
+			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
 			System.out.println("jugador atacando");
 		}

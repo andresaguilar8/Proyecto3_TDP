@@ -39,7 +39,6 @@ public class VisitorPersonaje extends Visitor {
 		
 	}
 
-	@Override
 	public void visitar(PowerUp p) {
 		// TODO Auto-generated method stub
 		

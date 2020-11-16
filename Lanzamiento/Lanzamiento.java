@@ -1,5 +1,7 @@
 package Lanzamiento;
 
+import javax.swing.ImageIcon;
+
 import Logica.Entidad;
 import Logica.Personaje;
 
@@ -12,5 +14,4 @@ public abstract class Lanzamiento extends Entidad{
 		this.cargaViral = cargaViral;
 	}
 	
-
 }

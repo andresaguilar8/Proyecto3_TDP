@@ -8,6 +8,7 @@ import Logica.Estado;
 import Logica.PowerUp;
 import PowerUp.Cuarentena;
 import PowerUp.Curacion;
+import PowerUp.SuperArmaSanitaria;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -55,22 +56,24 @@ public abstract class Enemigo extends Entidad{
     }
     
     public void accionar() {
-    	System.out.println("enemigo acciona");
+    	//System.out.println("enemigo acciona");
     }
     
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
-		int n = numAleatorio.nextInt(2) + 1;
+//		int n = numAleatorio.nextInt(2) + 1;
+		int n = 1;
 		PowerUp powerup=null;
 		System.out.println("lanza powerup");
 		switch(n) {
-			case 1: {
-				powerup= new Curacion(this.getPosicion().x,this.getPosicion().y);
-				System.out.println("powerup");
-			}
+			case 1: 
+				powerup = new SuperArmaSanitaria(this.getPosicion().x, this.getPosicion().y);
 				break;
-			case 2:
-				powerup= new Cuarentena(this.getPosicion().x,this.getPosicion().y);
+			case 2: 
+				powerup = new Curacion(this.getPosicion().x,this.getPosicion().y);
+				break;
+			case 3:
+				powerup = new Cuarentena(this.getPosicion().x,this.getPosicion().y);
 				break;
 				
 		}

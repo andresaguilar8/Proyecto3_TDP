@@ -15,13 +15,11 @@ public class VisitorLanzamientoAliado extends Visitor {
 		miEntidad = e;
 	}
 	
-	@Override
 	public void visitar(Personaje e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void visitar(Alpha a) {
 		miEntidad.lanzar(a);
 		a.recibirCura(100);
@@ -39,7 +37,6 @@ public class VisitorLanzamientoAliado extends Visitor {
 	public void visitar(Enemigo enemigo) {
 		miEntidad.lanzar(enemigo);
 		System.out.println("Visitar Enemigo enemigo");
-		// TODO Auto-generated method stub
 
 	}
 
@@ -50,7 +47,6 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
-		System.out.println("asasasas");
 		miEntidad.lanzar(lanzamientoEnemigo);
 	}
 
