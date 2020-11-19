@@ -2,20 +2,19 @@ package Enemigo;
 
 import java.util.Random;
 
+import Estado.EstadoEnemigo;
 import Logica.Entidad;
 
-import Logica.Estado;
 import Logica.PowerUp;
 import PowerUp.Cuarentena;
 import PowerUp.Curacion;
-import PowerUp.SuperArmaSanitaria;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Entidad{
 
 	protected int velocidad;
-	protected Estado estado;
+	
 	
 	public Enemigo(int x, int y) {
 		super(x, y);
@@ -67,12 +66,9 @@ public abstract class Enemigo extends Entidad{
 		System.out.println("lanza powerup");
 		switch(n) {
 			case 1: 
-				powerup = new SuperArmaSanitaria(this.getPosicion().x, this.getPosicion().y);
-				break;
-			case 2: 
 				powerup = new Curacion(this.getPosicion().x,this.getPosicion().y);
 				break;
-			case 3:
+			case 2:
 				powerup = new Cuarentena(this.getPosicion().x,this.getPosicion().y);
 				break;
 				

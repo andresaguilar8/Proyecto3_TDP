@@ -4,12 +4,15 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Estado.EstadoEnemigo;
 import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
 
 public class Alpha extends Enemigo {
+	
+	protected EstadoEnemigo estado;
 
 	public Alpha(int x, int y) {
 		super(x, y);
