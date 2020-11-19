@@ -10,7 +10,7 @@ public class EnemigoVeloz extends EstadoEnemigo {
 
 	@Override
 	public void movilizar() {
-		enemigo.movilizar(100);
+		enemigo.movilizar(10);
 		
 	}
 

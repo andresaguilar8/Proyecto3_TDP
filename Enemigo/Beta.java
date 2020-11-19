@@ -28,7 +28,7 @@ public class Beta extends Enemigo {
 	}
 
 	public void mover() {
-        super.mover();
+        super.movilizar(0);
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
         lanzar(this.juego.getPersonaje());
 	}

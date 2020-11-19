@@ -42,6 +42,13 @@ public class Alpha extends Enemigo {
 		Enemigo clone = new Alpha(0,0);
 		return clone;
 	}
+	
+	public void recibirCura(int cura) {
+		super.recibirCura(cura);
+		if(cargaViral <=20) {
+    		this.setEstado(new EnemigoVeloz(this));
+    	}
+	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -60,11 +67,8 @@ public class Alpha extends Enemigo {
 	}
 
 	@Override
-	public void recibirCargaViral(int cura) {
-		super.recibirCura(cura);
-		if(cargaViral <=20) {
-    		this.setEstado(new EnemigoVeloz(this));
-    	}
+	public void recibirCargaViral(int i) {
+		
 	}
 
 	@Override
