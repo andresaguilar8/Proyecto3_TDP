@@ -2,6 +2,8 @@ package Enemigo;
 
 import java.util.Random;
 
+import Estado.EnemigoVeloz;
+import Estado.Estado;
 import Estado.EstadoEnemigo;
 import Logica.Entidad;
 
@@ -14,6 +16,7 @@ import Visitor.VisitorEnemigo;
 public abstract class Enemigo extends Entidad{
 
 	protected int velocidad;
+	public Estado estado;
 	
 	
 	public Enemigo(int x, int y) {
@@ -22,12 +25,16 @@ public abstract class Enemigo extends Entidad{
 		visitor = new VisitorEnemigo(this);
 	}
 
-	public void mover() {
-		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
+	public void movilizar(int agregadoVelocidad) {
+		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad + agregadoVelocidad);
 		if(this.getPosicion().x<-10) {
-//			this.setVida(0);
-//			juego.disminuirVida(1);
+			//this.setVida(0);
+			//juego.disminuirVida(1);
 		}
+	}
+	
+	public void mover() {
+		estado.movilizar();
 	}
 	
 
@@ -79,6 +86,9 @@ public abstract class Enemigo extends Entidad{
 		}
 	}
     
+    public void setEstado(Estado est) {
+		estado=est;
+	}
     public abstract Enemigo clonar();
 	
 }

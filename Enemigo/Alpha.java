@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Estado.EnemigoNormal;
+import Estado.EnemigoVeloz;
 import Estado.EstadoEnemigo;
 import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
@@ -12,7 +14,7 @@ import Visitor.VisitorPersonaje;
 
 public class Alpha extends Enemigo {
 	
-	protected EstadoEnemigo estado;
+	
 
 	public Alpha(int x, int y) {
 		super(x, y);
@@ -20,6 +22,7 @@ public class Alpha extends Enemigo {
 		label.setBounds(x, y, 117, 110);
 		visitor = new VisitorPersonaje(this);
 		cargaViral = 100;
+		estado = new EnemigoNormal(this);
 	}
 	
 	public void mover() {
@@ -57,9 +60,11 @@ public class Alpha extends Enemigo {
 	}
 
 	@Override
-	public void recibirCargaViral(int i) {
-		// TODO Auto-generated method stub
-		
+	public void recibirCargaViral(int cura) {
+		super.recibirCura(cura);
+		if(cargaViral <=20) {
+    		this.setEstado(new EnemigoVeloz(this));
+    	}
 	}
 
 	@Override

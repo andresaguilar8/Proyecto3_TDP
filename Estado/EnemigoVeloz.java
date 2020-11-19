@@ -9,8 +9,8 @@ public class EnemigoVeloz extends EstadoEnemigo {
 	}
 
 	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
+	public void movilizar() {
+		enemigo.movilizar(100);
 		
 	}
 

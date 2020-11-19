@@ -2,6 +2,6 @@ package Estado;
 
 public abstract class Estado {
 	
-	public abstract void mover();
+	public abstract void movilizar();
 
 }
