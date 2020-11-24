@@ -24,6 +24,7 @@ public class HiloTiempo extends Thread{
 			juego.colisionar();
 			juego.getPersonaje().mover();
 			juego.getPersonaje().lanzar(null);
+			juego.verificarMapa();
 
 			//juego.getListaEntidades();
 			//juego.getListaEntidadesAeliminar();

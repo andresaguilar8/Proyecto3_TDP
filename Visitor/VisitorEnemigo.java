@@ -15,12 +15,11 @@ public class VisitorEnemigo extends Visitor {
 		miEntidad = e;
 	}
 	
-	@Override
 	public void visitar(Personaje p) {
 		miEntidad.infectar(p);
+		System.out.println("enemigo infectando pj");
 	}
 
-	@Override
 	public void visitar(Alpha a) 
 	{
 		
@@ -31,30 +30,20 @@ public class VisitorEnemigo extends Visitor {
 		
 	}
 
-	@Override
 	public void visitar(Enemigo enemigo) {
-		// TODO Auto-generated method stub
-		
+		miEntidad.mover();
 	}
 
-	@Override
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		miEntidad.mover();
-		
 	}
 
-	@Override
 	public void visitar(PowerUp p) {
-		// TODO Auto-generated method stub
-		
+		miEntidad.mover();
 	}
-	
-
 	
 }

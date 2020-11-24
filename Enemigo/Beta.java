@@ -1,9 +1,11 @@
 package Enemigo;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Estado.EnemigoNormal;
 import Lanzamiento.Arma;
 import Lanzamiento.ArmaEnemigo;
 import Lanzamiento.LanzamientoEnemigo;
@@ -25,6 +27,7 @@ public class Beta extends Enemigo {
 		cargaViral = 100;
 		contador = 0;
 		velocidad = 1;
+		estado = new EnemigoNormal(this);
 	}
 
 	public void mover() {
@@ -45,6 +48,7 @@ public class Beta extends Enemigo {
 
 	public void infectar(Entidad e) {
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+		System.out.println("beta infectando");
 		e.recibirCargaViral(1);
 	}
 	
@@ -57,19 +61,17 @@ public class Beta extends Enemigo {
 		return clone;
 	}
 
-	
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	public void reaparecer(int xAux, int yAux) {
-		this.setPosicion(xAux, yAux);
+	public void reaparecer() {
+		Point posicion = this.juego.getMapa().posicionAleatoriaEnemigos();
+		this.setPosicion(posicion.x, posicion.y);
 	}
 
 	public void recibirCargaViral(int i) {
@@ -82,7 +84,11 @@ public class Beta extends Enemigo {
 	}
 
 	public void accionar() {
-		super.accionar();
+		this.reaparecer();
+	}
+
+	public void reaparecer(int xAux, int yAux) {
+		
 	}
 
 

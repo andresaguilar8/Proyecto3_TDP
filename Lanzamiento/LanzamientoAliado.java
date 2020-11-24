@@ -66,7 +66,7 @@ public class LanzamientoAliado extends Lanzamiento{
 	
 	@Override
 	public void lanzar(Entidad e) {
-		e.recibirCura(40);
+		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
 		System.out.println("enemigo recibiendo cura");
 		this.cargaViral = 0;
 	}

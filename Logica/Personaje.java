@@ -91,8 +91,6 @@ public class Personaje extends Entidad {
             pos.x = 400;
         
         label.setLocation(pos.x + desplazamientoX, pos.y);
-        
-//        this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 	}
 	
 
@@ -107,7 +105,7 @@ public class Personaje extends Entidad {
 			arma.setImagenLanzamiento(rutaLanzamiento);
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
-			System.out.println("jugador atacando");
+			System.out.println("poder del jugador:"+this.getPoderDeDesinfeccion());
 		}
 	}
 	
@@ -161,9 +159,7 @@ public class Personaje extends Entidad {
         }
     }
 
-	@Override
 	public void accionar() {
-		// TODO Auto-generated method stub
 		
 	}
 

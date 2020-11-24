@@ -27,27 +27,27 @@ public class VisitorSuperArmaSanitaria extends Visitor{
 	}
 
 	public void visitar(Alpha a) {
-		
+		power.mover();
 	}
 
 	public void visitar(Beta b) {
-		
+		power.mover();
 	}
 
 	public void visitar(Enemigo enemigo) {
-		
+		power.mover();
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		
+		power.mover();
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
-		
+		power.mover();
 	}
 
 	public void visitar(PowerUp p) {
-		
+		power.mover();
 	}
 	
 }

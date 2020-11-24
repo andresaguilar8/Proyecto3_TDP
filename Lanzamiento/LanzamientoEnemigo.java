@@ -23,8 +23,6 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	public void mover() {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
-//		if(this.getPosicion().x > 1200 || this.getPosicion().y < 0)
-//			this.vida=0;
 	}
 
 	public void keyPressed(KeyEvent arg0) {
@@ -35,15 +33,12 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		
 	}
 
-
 	public void reaparecer(int xAux, int yAux) {
 		
 		
 	}
 
-	@Override
 	public void recibirCargaViral(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -59,17 +54,12 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		this.cargaViral = 0;
 	}
 
-	@Override
 	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void accionar() {
-		//seteo la carga viral del lanzamiento en 0 para que la lista lo remueva
 		this.setCargaViral(0);
 	}
-
-	
 
 }

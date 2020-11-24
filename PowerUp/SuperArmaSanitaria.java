@@ -23,7 +23,6 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 		super(x, y);
 		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/PowerUpCuracion.png")));
 		visitor = new VisitorSuperArmaSanitaria(this);
-		//entry = new Entrada<Personaje, Integer>(juego.getPersonaje(), 110);
 		mapeo = new LinkedHashMap<Personaje, Integer>();
 		mejora = 50;
 	}
@@ -33,10 +32,11 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 	}
 	
 	public void run() {
-		for(Entidad e: juego.getListaEntidades())  
-			e.aceptar(visitor);
+		//if (juego.getListaEntidades().size() > 0)
+			//for(Entidad e: juego.getListaEntidades())  
+				//e.aceptar(visitor);
 		for(Map.Entry<Personaje,Integer> entry: mapeo.entrySet()) {
-			entry.getKey().setRutaLanzamiento("/Imagenes/LanzamientoEnemigoGif.gif");
+			entry.getKey().setRutaLanzamiento("/Imagenes/superArma.gif");
 		}
 		try {
 			Thread.sleep(4000);
@@ -44,12 +44,10 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		for(Map.Entry<Personaje,Integer> entry: mapeo.entrySet())
+		for(Map.Entry<Personaje,Integer> entry: mapeo.entrySet()) {
 			entry.getKey().setRutaLanzamiento("/Imagenes/LanzamientoPersonajeGif.gif");
-
-//			
-//		}
-		
+			entry.getKey().setPoderDeDesinfeccion(entry.getKey().getPoderDeDesinfeccion() - mejora);
+		}
 	}
 	
 	public int getMejora() {
@@ -60,4 +58,4 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 		mapeo.put(e, e.getPoderDeDesinfeccion());
 	}
 	
-	}
+}

@@ -16,15 +16,15 @@ public class VisitorPersonaje extends Visitor {
 	}
 
 	public void visitar(Enemigo e) {
-		
+		e.infectar(miEntidad);
 	}
 	
 	public void visitar(Alpha a) {
-		
+		a.infectar(miEntidad);
 	}
 	
 	public void visitar(Beta b) {
-		
+		b.infectar(miEntidad);
 	}
 
 	public void visitar(Personaje e) {

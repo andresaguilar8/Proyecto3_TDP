@@ -20,7 +20,6 @@ public class Alpha extends Enemigo {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
 		label.setBounds(x, y, 117, 110);
-		visitor = new VisitorPersonaje(this);
 		cargaViral = 100;
 		estado = new EnemigoNormal(this);
 	}
@@ -30,6 +29,11 @@ public class Alpha extends Enemigo {
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
     }
 
+	public void infectar(Entidad e) {
+		System.out.println("alpha infecta");
+		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+	}
+	
     public void atacar(Entidad e) {
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
     }
@@ -45,56 +49,39 @@ public class Alpha extends Enemigo {
 	
 	public void recibirCura(int cura) {
 		super.recibirCura(cura);
-		if(cargaViral <=20) {
+		if(cargaViral <= 20) {
     		this.setEstado(new EnemigoVeloz(this));
     	}
 	}
 
-	@Override
 	public void keyPressed(KeyEvent arg0) {
 		
 	}
 
-	@Override
 	public void keyReleased(KeyEvent arg0) {
 		
 	}
 
-	@Override
 	public void reaparecer(int xAux, int yAux) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void recibirCargaViral(int i) {
 		
 	}
 
-	@Override
-	public void infectar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
+
 	public void lanzar(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void accionar() {
 		super.accionar();
 	}
-
-	
-
-
 
 }

@@ -10,7 +10,7 @@ import Enemigo.Alpha;
 import GUI.GUI;
 import GUI.HiloTiempo;
 import Mapa.Mapa;
-import Mapa.MapaUno;
+import Mapa.Mapa1;
 
 public class Juego {
 
@@ -22,7 +22,7 @@ public class Juego {
 	
 	public Juego(GUI gui) {
 		this.gui = gui;
-		this.mapa = new MapaUno(this);
+		this.mapa = new Mapa1(this);
 		listaEntidades= new LinkedList<Entidad>();
 		entidadesPendientes = new LinkedList<Entidad>();
 		entidadesAeliminar = new LinkedList<Entidad>();
@@ -37,7 +37,6 @@ public class Juego {
 		for(Entidad e: listaEntidades) {
 			e.setJuego(this);
 			gui.agregarEntidad(e.getLabel());
-//			System.out.println("iniciar entidades de juego");
 		}
 	}
 	
@@ -45,8 +44,7 @@ public class Juego {
 		personaje = new Personaje(200, 460);
 		personaje.setJuego(this);
 		gui.agregarEntidad(personaje.getLabel());
-//		System.out.println("inicializar personaje");
-		//listaEntidades.add(personaje);
+		listaEntidades.add(personaje);
 	}
 	
 	
@@ -68,29 +66,45 @@ public class Juego {
 	}
 	
 	public void colisionar() {
-		colisionarConPersonaje();
-		colisionarEnemigosConLanzamientos();
+		for(int i=0; i<listaEntidades.size();i++) {
+			boolean collidedGeneral = false;
+			Entidad e1 = listaEntidades.get(i);
+			for(int j = 0; j < listaEntidades.size();j++) {
+				Entidad e2 = listaEntidades.get(j);
+				if(e1 != e2 && verificarColision(e1,e2)) {
+					e1.colisionar(e2);
+					collidedGeneral=true;
+				}				
+			}
+			if (e1.getPosicion().y > 550) {
+				e1.accionar();
+			}
+			if(!collidedGeneral) {
+				e1.mover();
+			}
+		}
 	}
 	
 	private void colisionarConPersonaje() {
 		int xAux, yAux;
-		boolean collidedGeneral = false;
+		
 		for (int i = 0; i < listaEntidades.size(); i++) {
+			boolean collidedGeneral = false;
 			Entidad entidad_1 = listaEntidades.get(i);
 				if(verificarColision(entidad_1,personaje)) {
+					System.out.println("colisionan");
 					entidad_1.colisionar(personaje);
-					collidedGeneral=true;
+					collidedGeneral = true;
 				}				
 				
 			if(!collidedGeneral) {
 				entidad_1.mover();
 			}
 			if (entidad_1.getPosicion().y > 480 ) {
-				//System.out.println("paso los 480");
 				Point posicion = this.mapa.posicionAleatoriaEnemigos();
 				entidad_1.reaparecer(posicion.x, posicion.y);
 			}
-			collidedGeneral = false;
+//			collidedGeneral = false;
 		}
 	}
 	
@@ -106,7 +120,6 @@ public class Juego {
 					collidedGeneral = true;
 				}	
 				if (entidad_1.getPosicion().y > 550) {
-//					System.out.println("entidad paso los 500 de y");
 					entidad_1.accionar();
 				}
 			}
@@ -121,7 +134,7 @@ public class Juego {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
 		Rectangle r1= entidad_1.getLabel().getBounds();
 		r1.height/=2.15;
-		r1.width/=2;
+		r1.width/=3;
 		Rectangle r2= entidad_2.getLabel().getBounds();
 		r2.height/=2.15;
 		r2.width/=2;
@@ -177,5 +190,35 @@ public class Juego {
 	public Personaje getPersonaje() {
 		return personaje;
 	}
+
+	public void setMapa(Mapa mapa) {
+		this.mapa = mapa;
+	}
 	
+	public void limpiarLista() {
+		for(Entidad e: listaEntidades)
+			entidadesAeliminar.add(e);
+	}
+	
+	public void setHilo(HiloTiempo hT) {
+		this.tiempo = hT;
+	}
+	
+	public void verificarMapa() {
+		if(mapa.getListaEnemigos().size()==0) { 
+			mapa.mapaSiguiente();
+			if(mapa == null) {
+				limpiarLista();
+				gui.ganar();
+				System.out.println("cambio de mapa");
+				tiempo.finalizar();
+			}
+		}
+		if(this.personaje.getCargaViral() >= 100) {
+			limpiarLista();
+			gui.gameOver();
+			tiempo.finalizar();
+		}
+		
+	}
 }

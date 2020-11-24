@@ -39,9 +39,7 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 		miEntidad.mover();
 	}
 
-	@Override
 	public void visitar(PowerUp p) {
-		// TODO Auto-generated method stub
 		
 	}
 

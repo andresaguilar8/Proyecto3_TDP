@@ -43,27 +43,12 @@ public abstract class Mapa {
 				entidades.addLast(nuevo);
 				System.out.println("no hay colisiones");
 			}
-			//else {
-				//i--;
-				//nuevo=null;
-			}
-//	}
-//		for(int i=0; i<cantObstaculos-1; i++) {
-//			aux=ran.nextInt(cantObstaculos-1);
-//			GameObject nuevo;
-//			nuevo=obstaculos[aux].clonar();
-//			Point lugar=posicionAleatoriaObstaculos();
-//			nuevo.setPos(lugar.x, lugar.y);
-//			ubicacionDefinitiva(nuevo);
-//			if(!hayColisionesConOtrosPersonajes(nuevo, entidades)) {
-//				entidades.addLast(nuevo);
-//			}
-//			else {
-//				i--;
-//				nuevo=null;
-			
-		
+		}
 		return entidades;
+	}
+	
+	public void mapaSiguiente() {
+		juego.iniciarEntidades();
 	}
 	
 	public boolean hayColisionesConOtrosPersonajes(Entidad nuevo, LinkedList<Entidad> lista) {	
