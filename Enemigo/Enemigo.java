@@ -1,12 +1,10 @@
 package Enemigo;
 
+import java.awt.Point;
+
 import java.util.Random;
-
-import Estado.EnemigoVeloz;
 import Estado.Estado;
-import Estado.EstadoEnemigo;
 import Logica.Entidad;
-
 import Logica.PowerUp;
 import PowerUp.Cuarentena;
 import PowerUp.Curacion;
@@ -14,10 +12,11 @@ import PowerUp.SuperArmaSanitaria;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
-public abstract class Enemigo extends Entidad{
+public abstract class Enemigo extends Entidad {
 
 	protected int velocidad;
 	public Estado estado;
+	int poder;
 	
 	public Enemigo(int x, int y) {
 		super(x, y);
@@ -28,8 +27,7 @@ public abstract class Enemigo extends Entidad{
 	public void movilizar(int agregadoVelocidad) {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad + agregadoVelocidad);
 		if(this.getPosicion().x < -10) {
-			//this.setVida(0);
-			//juego.disminuirVida(1);
+		
 		}
 	}
 	
@@ -66,10 +64,8 @@ public abstract class Enemigo extends Entidad{
     
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
-//		int n = numAleatorio.nextInt(2) + 1;
-		int n = 3;
-		PowerUp powerup=null;
-		System.out.println("lanza powerup");
+		int n = numAleatorio.nextInt(6) + 1;
+		PowerUp powerup = null;
 		switch(n) {
 			case 1: 
 				powerup = new Curacion(this.getPosicion().x,this.getPosicion().y);
@@ -82,14 +78,18 @@ public abstract class Enemigo extends Entidad{
 				break;
 				
 		}
-		if(powerup != null) {
+		if(powerup != null) 
 			juego.agregarObjetos(powerup);
-		}
 	}
     
     public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+    
+    public void reaparecer() {
+    	Point posicion = this.juego.getMapa().posicionAleatoriaEnemigos();
+		this.setPosicion(posicion.x, posicion.y);
+    }
     
     public abstract Enemigo clonar();
 	

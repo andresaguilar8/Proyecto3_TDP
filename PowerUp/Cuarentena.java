@@ -2,14 +2,11 @@ package PowerUp;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import javax.swing.ImageIcon;
-
 import Enemigo.Enemigo;
 import Logica.Entidad;
 import Logica.PowerUp;
 import Visitor.VisitorCuarentena;
-import Visitor.VisitorPowerUp;
 
 public class Cuarentena extends PowerUp implements Runnable {
 	

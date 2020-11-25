@@ -1,26 +1,18 @@
 package Enemigo;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
-
 import Estado.EnemigoNormal;
 import Estado.EnemigoVeloz;
-import Estado.EstadoEnemigo;
-import Lanzamiento.LanzamientoEnemigo;
 import Logica.Entidad;
-import Visitor.Visitor;
-import Visitor.VisitorPersonaje;
 
 public class Alpha extends Enemigo {
 	
-	
-
 	public Alpha(int x, int y) {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
 		label.setBounds(x, y, 117, 110);
 		cargaViral = 100;
+		poder = 3;
 		estado = new EnemigoNormal(this);
 	}
 	
@@ -32,6 +24,8 @@ public class Alpha extends Enemigo {
 	public void infectar(Entidad e) {
 		System.out.println("alpha infecta");
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
+		e.recibirCargaViral(poder);
+		
 	}
 	
     public void atacar(Entidad e) {
@@ -54,34 +48,20 @@ public class Alpha extends Enemigo {
     	}
 	}
 
-	public void keyPressed(KeyEvent arg0) {
-		
-	}
-
-	public void keyReleased(KeyEvent arg0) {
-		
-	}
-
-	public void reaparecer(int xAux, int yAux) {
-		
-	}
-
 	public void recibirCargaViral(int i) {
 		
 	}
-
-
+	
+	public void reaparecer() {
+		super.reaparecer();
+	}
 
 	public void lanzar(Entidad e) {
 		
 	}
 
-	public void curar(Entidad e) {
-		
-	}
-
 	public void accionar() {
-		super.accionar();
+		this.reaparecer();
 	}
 
 }

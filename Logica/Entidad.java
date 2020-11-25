@@ -1,12 +1,7 @@
 package Logica;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
-
 import javax.swing.JLabel;
-
-import Enemigo.Alpha;
-import Lanzamiento.LanzamientoEnemigo;
 import Visitor.Visitor;
 
 public abstract class Entidad  {
@@ -29,8 +24,7 @@ public abstract class Entidad  {
 	public void setPosicion(int x, int y) {
 		label.setLocation(x, y);
 	}
-	
-	
+		
 	public Point getPosicion() {
 		return label.getLocation();
 	}
@@ -59,11 +53,7 @@ public abstract class Entidad  {
 	
 	public abstract void mover();
 
-	public abstract void keyPressed(KeyEvent arg0);
-
-	public abstract void keyReleased(KeyEvent arg0);
-
-	public abstract void reaparecer(int xAux, int yAux);
+	public abstract void reaparecer();
 
 	public abstract void recibirCargaViral(int i);
 
@@ -71,10 +61,6 @@ public abstract class Entidad  {
 
 	public abstract void lanzar(Entidad e);
 	
-	public void curar(Entidad e) {
-		e.setCargaViral(0);
-	}
-
 	public abstract void accionar();
 
 }

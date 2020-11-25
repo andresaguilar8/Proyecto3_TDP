@@ -1,7 +1,5 @@
 package Visitor;
 
-import Enemigo.Alpha;
-import Enemigo.Beta;
 import Enemigo.Enemigo;
 import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
@@ -18,16 +16,6 @@ public class VisitorEnemigo extends Visitor {
 	public void visitar(Personaje p) {
 		miEntidad.infectar(p);
 		System.out.println("enemigo infectando pj");
-	}
-
-	public void visitar(Alpha a) 
-	{
-		
-	}
-	
-	public void visitar(Beta b) 
-	{
-		
 	}
 
 	public void visitar(Enemigo enemigo) {

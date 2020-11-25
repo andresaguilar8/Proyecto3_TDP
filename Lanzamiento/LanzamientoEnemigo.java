@@ -1,9 +1,7 @@
 package Lanzamiento;
 
 import java.awt.event.KeyEvent;
-
 import Logica.Entidad;
-import Logica.Personaje;
 import Visitor.Visitor;
 import Visitor.VisitorLanzamientoEnemigo;
 
@@ -60,6 +58,12 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	public void accionar() {
 		this.setCargaViral(0);
+	}
+
+	@Override
+	public void reaparecer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

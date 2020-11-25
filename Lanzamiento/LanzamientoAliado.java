@@ -20,71 +20,61 @@ public class LanzamientoAliado extends Lanzamiento{
 	
 	public void aceptar(Visitor visitor) {
 		visitor.visitar(this);
-		
 	}
 
 	public void mover() {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y - velocidad);
-		
 	}
 
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void reaparecer(int xAux, int yAux) {
-		// TODO Auto-generated method stub
 		
 	}
+	
 	public void recibirCargaViral(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	public void infectar(LanzamientoEnemigo e) {
-		e.recibirCura(100);
 	}
 	
 	public void infectar(Alpha a) {
-		a.recibirCura(100);
-		System.out.println("alpha recibiendo cura");
 	}
 	
 	public void infectar(Beta b) {
-		b.recibirCura(100);
-		System.out.println("beta recibiendo cura");
 	}
 	
 	public void lanzar(LanzamientoEnemigo l) {
+		
 	}
 	
-	@Override
 	public void lanzar(Entidad e) {
 		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
 		System.out.println("enemigo recibiendo cura");
 		this.cargaViral = 0;
 	}
 	
-	@Override
 	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void infectar(Entidad e) {
-		// TODO Auto-generated method stub
+		
+	}
+
+	public void accionar() {
 		
 	}
 
 	@Override
-	public void accionar() {
+	public void reaparecer() {
 		// TODO Auto-generated method stub
 		
 	}

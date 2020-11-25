@@ -1,7 +1,5 @@
 package Visitor;
 
-import Enemigo.Alpha;
-import Enemigo.Beta;
 import Enemigo.Enemigo;
 import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
@@ -18,14 +16,6 @@ public class VisitorPersonaje extends Visitor {
 	public void visitar(Enemigo e) {
 		e.infectar(miEntidad);
 	}
-	
-	public void visitar(Alpha a) {
-		a.infectar(miEntidad);
-	}
-	
-	public void visitar(Beta b) {
-		b.infectar(miEntidad);
-	}
 
 	public void visitar(Personaje e) {
 
@@ -40,7 +30,6 @@ public class VisitorPersonaje extends Visitor {
 	}
 
 	public void visitar(PowerUp p) {
-		// TODO Auto-generated method stub
 		
 	}
 

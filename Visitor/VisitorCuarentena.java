@@ -1,7 +1,5 @@
 package Visitor;
 
-import Enemigo.Alpha;
-import Enemigo.Beta;
 import Enemigo.Enemigo;
 import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
@@ -20,37 +18,24 @@ public class VisitorCuarentena extends Visitor {
 	public void visitar(Personaje e) {
 		power.setCargaViral(0);
 		power.realizarAccion();
-		
-	}
-
-	public void visitar(Alpha a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void visitar(Beta b) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void visitar(Enemigo enemigo) {
 		power.agregarAMapeo(enemigo);
 		enemigo.setVelocidad(0);
+		power.mover();
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		// TODO Auto-generated method stub
-		
+		power.mover();
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
-		// TODO Auto-generated method stub
-		
+		power.mover();
 	}
 
 	public void visitar(PowerUp p) {
-		// TODO Auto-generated method stub
-		
+		power.mover();
 	}
 
 }

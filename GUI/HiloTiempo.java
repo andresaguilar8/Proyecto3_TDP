@@ -2,13 +2,14 @@ package GUI;
 
 import Logica.Juego;
 
-public class HiloTiempo extends Thread{
+public class HiloTiempo extends Thread {
+	
 	private Juego juego;
 	private volatile boolean hayJuego;
 	
 	public HiloTiempo(Juego juego) {
 		this.juego = juego;
-		hayJuego = true;
+		this.hayJuego = true;
 	}
 	
 	public void run() {
@@ -17,23 +18,17 @@ public class HiloTiempo extends Thread{
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}		
-			
+			}			
 			juego.agregarEntidades();
 			juego.eliminarEntidades();
 			juego.colisionar();
 			juego.getPersonaje().mover();
 			juego.getPersonaje().lanzar(null);
 			juego.verificarMapa();
-
-			//juego.getListaEntidades();
-			//juego.getListaEntidadesAeliminar();
-			//juego.getListaEntidadesPendientes();
-			//juego.verificarMapa();
 		}
 	}
 	
 	public void finalizar() {
-		hayJuego = false;
+		this.hayJuego = false;
 	}
 }

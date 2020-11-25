@@ -2,20 +2,19 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Logica.Entidad;
 import Logica.Juego;
 
@@ -23,7 +22,7 @@ public class GUI extends JFrame {
 
 	protected JPanel contentPane;
 	protected JLabel etiquetaGradoDeInfeccion, gameOver, ganar;
-	protected JPanelConFondo panelJuego;
+	protected JPanelConFondo panelActual;
 	protected Juego juego;
 	protected HiloTiempo tiempo;
 	public static Dimension size = new Dimension(1250, 790);
@@ -44,21 +43,11 @@ public class GUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public GUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 100, 500, 600);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		
-		panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_!.jpeg")).getImage());
-		panelJuego.setBounds(500, 100, 500, 600);
-		contentPane.add(panelJuego);
+
+		setearConsideracionesGUI();
+		inicializarJuegoGraficamente();
 		
 		juego = new Juego(this);
 		tiempo = new HiloTiempo(juego);
@@ -75,43 +64,67 @@ public class GUI extends JFrame {
 		iniciarKeyListener();
 		
 	}
+	public void setearConsideracionesGUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(500, 100, 500, 600);
+		this.setResizable(false);
+	}
+	
+	public void inicializarJuegoGraficamente() {
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(Color.black);
+		setContentPane(contentPane);
+		
+		//panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_!.jpeg")).getImage());
+		//panelJuego.setBounds(500, 100, 500, 600);
+		//contentPane.add(panelJuego);
+		repaint();
+//		panelJuego.paint(getGraphics());
+	}
 	
 	public void gameOver() {
-		gameOver= new JLabel();
+		gameOver = new JLabel();
 		gameOver.setBounds(0,0,1280,720);
-		gameOver.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/volverAJugar.png")));
+		gameOver.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/gameOver.jpg")));
 		terminarJuego(gameOver);
 	}
 	
 	public void agregarEntidad(JLabel nuevo) {
-		panelJuego.add(nuevo);
+		this.getPanelActual().add(nuevo);
 		nuevo.setLocation(nuevo.getBounds().getLocation());
 		repaint();
 	}
 	
+	private Container getPanelActual() {
+		return panelActual;
+	}
+
 	private void terminarJuego(JLabel label) {
-		JButton volverAJugar= new JButton();
-		volverAJugar.setBounds(50, 20, 230, 36);
-		volverAJugar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/volverAJugar.png")));
+		JButton volverAJugar = new JButton();
+		volverAJugar.setBounds(140, 150, 230, 36);
+		volverAJugar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/VolverAJugar.png")));
 		volverAJugar.setOpaque(false);
-		volverAJugar.setBackground(new Color(0,0,0));
+		volverAJugar.setBackground(new Color(0, 0, 0));
 		volverAJugar.setBorderPainted(false);
 		volverAJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.removeAll();
 				repaint();
+				setearConsideracionesGUI();
+				inicializarJuegoGraficamente();
 				juego = new Juego(GUI.this);
 				tiempo = new HiloTiempo(juego);
 				juego.setHilo(tiempo);
 				tiempo.start();
-				//inicializarLabels();
+				setVisible(true);
 				requestFocus();
 			}
 		});
 		
-		JButton salir= new JButton();
-		salir.setBounds(50, 70, 61, 29);
-		salir.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/salir.png")));
+		JButton salir = new JButton();
+		salir.setBounds(210, 190, 61, 29);
+		salir.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/Salir.png")));
 		salir.setOpaque(false);
 		salir.setBackground(new Color(0,0,0));
 		salir.setBorderPainted(false);
@@ -131,7 +144,7 @@ public class GUI extends JFrame {
 	public void ganar() {
 		ganar = new JLabel();
 		ganar.setBounds(0,0,1280,600);
-		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/ganar.png")));
+		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/Ganar.jpg")));
 		terminarJuego(ganar);
 	}
 	
@@ -147,8 +160,14 @@ public class GUI extends JFrame {
 	}
 		
 	public void eliminarEnemigo(Entidad aEliminar) {
-		panelJuego.remove(aEliminar.getLabel());
+		panelActual.remove(aEliminar.getLabel());
 		repaint();
+	}
+
+
+	public void setPanelActual(JPanelConFondo panelActual) {
+		this.panelActual = (JPanelConFondo) panelActual;
+		this.setVisible(true);
 	}
 	
 	

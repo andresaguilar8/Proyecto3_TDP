@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
-
 import Enemigo.Enemigo;
 import Logica.Entidad;
 import Logica.Juego;
@@ -49,6 +48,7 @@ public abstract class Mapa {
 	
 	public void mapaSiguiente() {
 		juego.iniciarEntidades();
+		juego.inicializarPersonaje();
 	}
 	
 	public boolean hayColisionesConOtrosPersonajes(Entidad nuevo, LinkedList<Entidad> lista) {	
@@ -73,20 +73,17 @@ public abstract class Mapa {
 	public void ubicacionDefinitiva(Entidad nuevo) {
 		Rectangle rectangulo = nuevo.getLabel().getBounds();
 		System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
-		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+35, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-370);
+		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+60, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-370);
 	}
 	
 	public Point posicionAleatoriaEnemigos() {
 		Random ranX = new Random();
 		Random ranY = new Random();
-		Random ranAux = new Random();
 		
 		int x = ranX.nextInt(5);
 		int y = ranY.nextInt(500);
-		int aux = ranAux.nextInt(3);
 		
 		Point punto = new Point(x*100, y);
-//		Point punto = new Point(x*100, y*aux);
 		
 		return punto;
 	}

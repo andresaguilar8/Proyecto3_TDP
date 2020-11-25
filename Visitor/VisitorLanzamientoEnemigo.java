@@ -1,7 +1,5 @@
 package Visitor;
 
-import Enemigo.Alpha;
-import Enemigo.Beta;
 import Enemigo.Enemigo;
 import Lanzamiento.LanzamientoAliado;
 import Lanzamiento.LanzamientoEnemigo;
@@ -19,14 +17,6 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 		miEntidad.lanzar(e);
 	}
 
-	public void visitar(Alpha a) {
-
-	}
-
-	public void visitar(Beta b) {
-
-	}
-
 	public void visitar(Enemigo enemigo) {
 		miEntidad.mover();
 	}
@@ -40,7 +30,7 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 	}
 
 	public void visitar(PowerUp p) {
-		
+		miEntidad.mover();
 	}
 
 }

@@ -1,12 +1,7 @@
 package Logica;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.LinkedList;
-
-import javax.swing.JLabel;
-
-import Enemigo.Alpha;
 import GUI.GUI;
 import GUI.HiloTiempo;
 import Mapa.Mapa;
@@ -85,50 +80,7 @@ public class Juego {
 		}
 	}
 	
-	private void colisionarConPersonaje() {
-		int xAux, yAux;
-		
-		for (int i = 0; i < listaEntidades.size(); i++) {
-			boolean collidedGeneral = false;
-			Entidad entidad_1 = listaEntidades.get(i);
-				if(verificarColision(entidad_1,personaje)) {
-					System.out.println("colisionan");
-					entidad_1.colisionar(personaje);
-					collidedGeneral = true;
-				}				
-				
-			if(!collidedGeneral) {
-				entidad_1.mover();
-			}
-			if (entidad_1.getPosicion().y > 480 ) {
-				Point posicion = this.mapa.posicionAleatoriaEnemigos();
-				entidad_1.reaparecer(posicion.x, posicion.y);
-			}
-//			collidedGeneral = false;
-		}
-	}
 	
-	private void colisionarEnemigosConLanzamientos() {
-
-		for(int i = 0; i < listaEntidades.size(); i++) {	
-			boolean collidedGeneral = false;
-			Entidad entidad_1 = listaEntidades.get(i);
-			for(int j = 0; j < listaEntidades.size(); j++) {
-				Entidad entidad_2 = listaEntidades.get(j);
-				if(entidad_1 != entidad_2 && verificarColision(entidad_1 ,entidad_2)) {
-					entidad_1.colisionar(entidad_2);
-					collidedGeneral = true;
-				}	
-				if (entidad_1.getPosicion().y > 550) {
-					entidad_1.accionar();
-				}
-			}
-			if(!collidedGeneral) {
-				entidad_1.mover();
-			}
-		}
-			
-	}	
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
@@ -142,22 +94,24 @@ public class Juego {
 	}
 	
 	public void eliminarEntidades() {
-		//if (this.personaje.getCargaViral() >= 100) {
-			//entidadesAeliminar.add(personaje);
-		//}
-		
-		for(Entidad e: listaEntidades) {     
-			if(e.getCargaViral() <= 0) {
-				entidadesAeliminar.add(e);
-			}
+		if (this.personaje.getCargaViral() >= 100) {
+			entidadesAeliminar.add(personaje);
 		}
+		
+		for(Entidad e: listaEntidades) { 
+			if (e != personaje)
+				if(e.getCargaViral() <= 0) {
+					entidadesAeliminar.add(e);
+				}
+			}
 		//si la posicion es por debajo del personaje debo eliminar la entidad.
 		// metodo "accionar" que accione de acuerdo, si es un "enemigo" deberia re-aparecer.
 		eliminarAux(entidadesAeliminar);
 	}
 	
 	private void eliminarAux(LinkedList<Entidad> lista) {
-		LinkedList<Entidad> aux= (LinkedList<Entidad>) entidadesAeliminar.clone();
+		@SuppressWarnings("unchecked")
+		LinkedList<Entidad> aux = (LinkedList<Entidad>) entidadesAeliminar.clone();
 		entidadesAeliminar = new LinkedList<Entidad>();
 		for(Entidad e: aux) {
 			gui.eliminarEnemigo(e);
@@ -173,6 +127,10 @@ public class Juego {
 
 	public LinkedList<Entidad> getListaEntidades() {
 		return listaEntidades;
+	}
+	
+	public GUI getGUI() {
+		return this.gui;
 	}
 	
 	public LinkedList<Entidad> getListaEntidadesPendientes() {
@@ -205,7 +163,8 @@ public class Juego {
 	}
 	
 	public void verificarMapa() {
-		if(mapa.getListaEnemigos().size()==0) { 
+		if(mapa.getListaEnemigos().size() == 0) { 
+			System.out.println("Lista enemigos vacia");
 			mapa.mapaSiguiente();
 			if(mapa == null) {
 				limpiarLista();

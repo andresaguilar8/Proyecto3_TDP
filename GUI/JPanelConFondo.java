@@ -3,9 +3,7 @@ package GUI;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class JPanelConFondo extends JPanel {

@@ -2,14 +2,10 @@ package Logica;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import Lanzamiento.Arma;
 import Lanzamiento.ArmaAliado;
-import Lanzamiento.LanzamientoAliado;
-import Lanzamiento.LanzamientoEnemigo;
 import Visitor.Visitor;
 import Visitor.VisitorPersonaje;
 
@@ -28,13 +24,13 @@ public class Personaje extends Entidad {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 		this.label.setSize(90, 90);
-		cargaViral = 1;
+		cargaViral = 0;
 		velocidad = 5;
 		visitor = new VisitorPersonaje(this);
 		arma = new ArmaAliado();
 		curar = false;
 		contador = 0;
-		poderDeDesinfeccion = 100;
+		poderDeDesinfeccion = 400;
 		rutaLanzamiento = "/Imagenes/LanzamientoPersonajeGif.gif";
 	}
 	
@@ -69,31 +65,18 @@ public class Personaje extends Entidad {
 	public void setLabel(JLabel label) {
 		this.label = label;
 	}
-
-	public void moverDerecha() {
-		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata derecha/caminataDerecha1.gif")));
-		this.mover();
-	}
-	
-	public void moverIzquierda() {
-		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Caminata izquierda/caminataIzquierda1.gif")));
-		this.mover();
-	}
 	
 	public void mover() {
 		Point pos = this.getPosicion();
 		
-		
-        if (pos.x < 1) 
-            pos.x = 1;
+        if (pos.x < -10) 
+            pos.x = -10;
         
-        if (pos.x > 400) 
-            pos.x = 400;
+        if (pos.x > 415) 
+            pos.x = 415;
         
         label.setLocation(pos.x + desplazamientoX, pos.y);
 	}
-	
-
 
 	public void aceptar(Visitor visitor) {
 		visitor.visitar(this);
@@ -109,25 +92,13 @@ public class Personaje extends Entidad {
 		}
 	}
 	
-	@Override
 	public void reaparecer(int xAux, int yAux) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void infectar(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
-
-
-	@Override
-	public void curar(Entidad e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 	public void keyPressed(KeyEvent e) {
 	    int key = e.getKeyCode();
@@ -163,8 +134,10 @@ public class Personaje extends Entidad {
 		
 	}
 
-
-
-
+	@Override
+	public void reaparecer() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
