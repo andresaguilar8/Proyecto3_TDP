@@ -12,7 +12,7 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 	
 	public SuperArmaSanitaria(int x, int y) {
 		super(x, y);
-		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/PowerUpCuarentena.png")));
+		this.label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/SuperArmaSanitaria.gif")));
 		visitor = new VisitorSuperArmaSanitaria(this);
 		mejora = 50;
 	}

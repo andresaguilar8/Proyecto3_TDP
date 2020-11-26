@@ -32,7 +32,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//SplashScreen splash = new SplashScreen(2000);
+					//SplashScreen splash = new SplashScreen(2000);w
 					//splash.setVisible(true);
 					GUI frame = new GUI();
 					frame.setVisible(true);
@@ -143,8 +143,8 @@ public class GUI extends JFrame {
 	
 	public void ganar() {
 		ganar = new JLabel();
-		ganar.setBounds(0,0,1280,600);
-		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/Ganar.jpg")));
+		ganar.setBounds(0,0,1280,720);
+		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
 		terminarJuego(ganar);
 	}
 	
