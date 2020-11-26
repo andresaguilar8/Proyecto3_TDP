@@ -30,7 +30,7 @@ public class Personaje extends Entidad {
 		arma = new ArmaAliado();
 		curar = false;
 		contador = 0;
-		poderDeDesinfeccion = 400;
+		poderDeDesinfeccion = 40;
 		rutaLanzamiento = "/Imagenes/LanzamientoPersonajeGif.gif";
 	}
 	

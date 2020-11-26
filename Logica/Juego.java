@@ -61,7 +61,7 @@ public class Juego {
 	}
 	
 	public void colisionar() {
-		for(int i=0; i<listaEntidades.size();i++) {
+		for(int i = 0; i < listaEntidades.size();i++) {
 			boolean collidedGeneral = false;
 			Entidad e1 = listaEntidades.get(i);
 			for(int j = 0; j < listaEntidades.size();j++) {

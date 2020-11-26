@@ -19,6 +19,8 @@ public class HiloTiempo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}			
+			
+			//un metodo solo
 			juego.agregarEntidades();
 			juego.eliminarEntidades();
 			juego.colisionar();
