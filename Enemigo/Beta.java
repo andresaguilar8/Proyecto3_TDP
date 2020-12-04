@@ -21,7 +21,6 @@ public class Beta extends Enemigo {
 		cargaViral = 200;
 		poder = 1;
 		contador = 0;
-		velocidad = 1;
 		estado = new EnemigoNormal(this);
 	}
 
@@ -35,7 +34,7 @@ public class Beta extends Enemigo {
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaCaminaGif.gif")));
         contador++;
 		if(contador >= 70) {
-			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), cargaViral));
+			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poder));
 			contador = 0;
 		}
     }
@@ -44,6 +43,10 @@ public class Beta extends Enemigo {
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaAtacaGif.gif")));
 		System.out.println("beta infectando");
 		e.recibirCargaViral(poder);
+	}
+	
+	public int getPoder() {
+		return this.poder;
 	}
 	
     public void parar() {

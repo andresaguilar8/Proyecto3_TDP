@@ -36,6 +36,10 @@ public class Alpha extends Enemigo {
         label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlfaParado.png")));
     }
 
+    public int getPoder() {
+    	return this.poder;
+    }
+    
 	public Enemigo clonar() {
 		Enemigo clone = new Alpha(0,0);
 		return clone;

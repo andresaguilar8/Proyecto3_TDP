@@ -5,8 +5,8 @@ import Enemigo.Enemigo;
 public abstract class EstadoEnemigo extends Estado {
 	protected Enemigo enemigo;
 	
-	public EstadoEnemigo(Enemigo e) {
-		enemigo=e;
+	public EstadoEnemigo(Enemigo enemigo) {
+		this.enemigo = enemigo;
 	}
 	
 }

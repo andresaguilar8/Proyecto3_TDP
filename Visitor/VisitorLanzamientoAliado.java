@@ -19,11 +19,12 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	public void visitar(Enemigo enemigo) {
 		miEntidad.lanzar(enemigo);
+		this.miEntidad.setCargaViral(0);
 		System.out.println("VisitorLanzamientoAliado visita Enemigo");
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		miEntidad.mover();
+		//miEntidad.mover();
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {

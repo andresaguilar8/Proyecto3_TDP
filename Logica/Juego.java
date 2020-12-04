@@ -60,21 +60,33 @@ public class Juego {
 		this.tiempo = tiempo;
 	}
 	
-	public void colisionar() {
+	public void accionar() {
+		this.colisionar();
+		this.agregarEntidades();
+		this.eliminarEntidades();
+		this.colisionar();
+		this.getPersonaje().mover();
+		this.getPersonaje().lanzar(null);
+		this.verificarMapa();
+	}
+	
+	private void colisionar() {
 		for(int i = 0; i < listaEntidades.size();i++) {
-			boolean collidedGeneral = false;
+			boolean colisionan = false;
 			Entidad e1 = listaEntidades.get(i);
 			for(int j = 0; j < listaEntidades.size();j++) {
 				Entidad e2 = listaEntidades.get(j);
 				if(e1 != e2 && verificarColision(e1,e2)) {
 					e1.colisionar(e2);
-					collidedGeneral=true;
+					colisionan = true;
 				}				
 			}
+			
 			if (e1.getPosicion().y > 550) {
 				e1.accionar();
 			}
-			if(!collidedGeneral) {
+			
+			if(!colisionan) {
 				e1.mover();
 			}
 		}
@@ -93,7 +105,7 @@ public class Juego {
 		return r1.intersects(r2);
 	}
 	
-	public void eliminarEntidades() {
+	private void eliminarEntidades() {
 		if (this.personaje.getCargaViral() >= 100) {
 			entidadesAeliminar.add(personaje);
 		}
@@ -104,8 +116,6 @@ public class Juego {
 					entidadesAeliminar.add(e);
 				}
 			}
-		//si la posicion es por debajo del personaje debo eliminar la entidad.
-		// metodo "accionar" que accione de acuerdo, si es un "enemigo" deberia re-aparecer.
 		eliminarAux(entidadesAeliminar);
 	}
 	
@@ -134,14 +144,10 @@ public class Juego {
 	}
 	
 	public LinkedList<Entidad> getListaEntidadesPendientes() {
-		for (Entidad e: entidadesPendientes)
-			System.out.println("Lista entidades pendientes: "+e);
 		return entidadesPendientes;
 	}
 	
 	public LinkedList<Entidad> getListaEntidadesAeliminar() {
-		for (Entidad e: entidadesAeliminar)
-			System.out.println("Lista entidades a eliminar: "+e);
 		return entidadesAeliminar;
 	}
 	
@@ -162,14 +168,12 @@ public class Juego {
 		this.tiempo = hT;
 	}
 	
-	public void verificarMapa() {
+	private void verificarMapa() {
 		if(mapa.getListaEnemigos().size() == 0) { 
-			System.out.println("Lista enemigos vacia");
 			mapa.mapaSiguiente();
 			if(mapa == null) {
 				limpiarLista();
 				gui.ganar();
-				System.out.println("cambio de mapa");
 				tiempo.finalizar();
 			}
 		}
@@ -178,6 +182,5 @@ public class Juego {
 			gui.gameOver();
 			tiempo.finalizar();
 		}
-		
 	}
 }

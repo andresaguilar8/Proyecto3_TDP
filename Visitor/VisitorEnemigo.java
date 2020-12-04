@@ -23,7 +23,8 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		
+		System.out.println("HOLAAA");
+//		miEntidad.setCargaViral();
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {

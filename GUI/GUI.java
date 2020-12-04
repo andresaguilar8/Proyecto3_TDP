@@ -32,8 +32,6 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//SplashScreen splash = new SplashScreen(2000);w
-					//splash.setVisible(true);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -52,14 +50,7 @@ public class GUI extends JFrame {
 		juego = new Juego(this);
 		tiempo = new HiloTiempo(juego);
 		juego.setTiempo(tiempo);
-		tiempo.start();
-		
-//		int numEntero = juego.getPersonaje().getCargaViral();   
-//	    String numCadena = numEntero+"asas";
-//		etiquetaGradoDeInfeccion = new JLabel(numCadena);
-//		etiquetaGradoDeInfeccion.setBounds(500, 100, 500, 500);
-//		panelJuego.add(etiquetaGradoDeInfeccion);
-		
+		tiempo.start();	
 		
 		iniciarKeyListener();
 		
@@ -77,17 +68,13 @@ public class GUI extends JFrame {
 		contentPane.setBackground(Color.black);
 		setContentPane(contentPane);
 		
-		//panelJuego = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_!.jpeg")).getImage());
-		//panelJuego.setBounds(500, 100, 500, 600);
-		//contentPane.add(panelJuego);
 		repaint();
-//		panelJuego.paint(getGraphics());
 	}
 	
 	public void gameOver() {
 		gameOver = new JLabel();
 		gameOver.setBounds(0,0,1280,720);
-		gameOver.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/gameOver.jpg")));
+		gameOver.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/GameOver.jpg")));
 		terminarJuego(gameOver);
 	}
 	
@@ -103,7 +90,7 @@ public class GUI extends JFrame {
 
 	private void terminarJuego(JLabel label) {
 		JButton volverAJugar = new JButton();
-		volverAJugar.setBounds(140, 150, 230, 36);
+		volverAJugar.setBounds(140, 130, 230, 36);
 		volverAJugar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/VolverAJugar.png")));
 		volverAJugar.setOpaque(false);
 		volverAJugar.setBackground(new Color(0, 0, 0));
@@ -123,7 +110,7 @@ public class GUI extends JFrame {
 		});
 		
 		JButton salir = new JButton();
-		salir.setBounds(210, 190, 61, 29);
+		salir.setBounds(210, 170, 61, 29);
 		salir.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/Salir.png")));
 		salir.setOpaque(false);
 		salir.setBackground(new Color(0,0,0));
@@ -143,7 +130,7 @@ public class GUI extends JFrame {
 	
 	public void ganar() {
 		ganar = new JLabel();
-		ganar.setBounds(0,0,1280,720);
+		ganar.setBounds(110,0,580,720);
 		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
 		terminarJuego(ganar);
 	}
@@ -170,6 +157,4 @@ public class GUI extends JFrame {
 		this.setVisible(true);
 	}
 	
-	
 }
-		

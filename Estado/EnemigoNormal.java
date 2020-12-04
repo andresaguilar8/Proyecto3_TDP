@@ -6,12 +6,19 @@ public class EnemigoNormal extends EstadoEnemigo{
 
 	public EnemigoNormal(Enemigo e) {
 		super(e);
+		this.velocidad = 1;
 	}
 
-	@Override
 	public void movilizar() {
-		enemigo.movilizar(0);
-		
+		enemigo.movilizar(velocidad);
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}	
 
 }

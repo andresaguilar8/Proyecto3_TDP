@@ -33,7 +33,8 @@ public class Cuarentena extends PowerUp implements Runnable {
 			e1.printStackTrace();
 		}
 		for (Map.Entry<Enemigo, Integer> entry: mapeo.entrySet()) {
-			entry.getKey().setVelocidad(entry.getValue());
+				entry.getKey().getEstado().setVelocidad(entry.getValue());
+				System.out.println(entry.getValue());
 		}
 	}
 	
@@ -42,6 +43,6 @@ public class Cuarentena extends PowerUp implements Runnable {
 	}
 
 	public void agregarAMapeo(Enemigo e) {
-		mapeo.put(e, e.getVelocidad());
+		mapeo.put(e, e.getEstado().getVelocidad());
 	}
 }

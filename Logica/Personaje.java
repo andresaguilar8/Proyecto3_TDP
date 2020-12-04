@@ -88,7 +88,7 @@ public class Personaje extends Entidad {
 			arma.setImagenLanzamiento(rutaLanzamiento);
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
-			System.out.println("poder del jugador:"+this.getPoderDeDesinfeccion());
+			System.out.println("poder del jugador: "+this.getPoderDeDesinfeccion());
 		}
 	}
 	
@@ -134,9 +134,7 @@ public class Personaje extends Entidad {
 		
 	}
 
-	@Override
 	public void reaparecer() {
-		// TODO Auto-generated method stub
 		
 	}
 

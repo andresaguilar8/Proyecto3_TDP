@@ -30,6 +30,7 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		personaje.setPoderDeDesinfeccion(personaje.getPoderDeDesinfeccion() - this.getMejora());
 		personaje.setRutaLanzamiento("/Imagenes/LanzamientoPersonajeGif.gif");
 	}
 	

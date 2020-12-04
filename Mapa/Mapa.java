@@ -23,7 +23,6 @@ public abstract class Mapa {
 		wGrilla = 500;
 		cantColumnas = 8;
 		anchoColumna = (wGrilla/cantColumnas);
-		
 	}
 	
 	public LinkedList<Entidad> crearEntidades() {
@@ -33,7 +32,7 @@ public abstract class Mapa {
 		for(int i = 0; i < cantEnemigos; i++) {
 			aux = ran.nextInt(2);
 			Entidad nuevo;
-			nuevo = enemigos[aux].clonar();
+			nuevo = enemigos[0].clonar();
 			Point lugar = posicionAleatoriaEnemigos();
 			nuevo.setPosicion(lugar.x, lugar.y);
 			ubicacionDefinitiva(nuevo);
@@ -72,8 +71,8 @@ public abstract class Mapa {
 	
 	public void ubicacionDefinitiva(Entidad nuevo) {
 		Rectangle rectangulo = nuevo.getLabel().getBounds();
-		System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
-		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+60, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-370);
+		//System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
+		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+60, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-470);
 	}
 	
 	public Point posicionAleatoriaEnemigos() {
@@ -89,7 +88,7 @@ public abstract class Mapa {
 	}
 	
 	public boolean dentroDeGrilla(Entidad elem) {
-		return elem.getPosicion().y>180 && elem.getPosicion().y<515 ;
+		return elem.getPosicion().y > 180 && elem.getPosicion().y < 515 ;
 	}
 	
 	public void eliminarEnemigo(Entidad aEliminar) {

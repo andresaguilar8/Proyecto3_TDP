@@ -1,6 +1,5 @@
 package Lanzamiento;
 
-import java.awt.event.KeyEvent;
 import Logica.Entidad;
 import Visitor.Visitor;
 import Visitor.VisitorLanzamientoEnemigo;
@@ -12,7 +11,6 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		velocidad = 2;
 		this.label.setSize(4, 4);
 		this.visitor = new VisitorLanzamientoEnemigo(this);
-		cargaViral = 10;
 	}
 
 	public void aceptar(Visitor visitor) {
@@ -23,46 +21,25 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
 	}
 
-	public void keyPressed(KeyEvent arg0) {
-		
-	}
-
-	public void keyReleased(KeyEvent arg0) {
-		
-	}
-
-	public void reaparecer(int xAux, int yAux) {
-		
-		
-	}
-
 	public void recibirCargaViral(int i) {
 		
 	}
 
 	public void infectar(Entidad e) {
-		e.recibirCargaViral(10);
-		this.setCargaViral(0);
-		System.out.println("carga viral del jugador: "+e.getCargaViral());
+		
 	}
 
 	public void lanzar(Entidad e) {
-		e.recibirCargaViral(10);
+		e.recibirCargaViral(7);
 		System.out.println("lanzamiento enemigo infectando al personaje");
 		this.cargaViral = 0;
-	}
-
-	public void curar(Entidad e) {
-		
 	}
 
 	public void accionar() {
 		this.setCargaViral(0);
 	}
 
-	@Override
 	public void reaparecer() {
-		// TODO Auto-generated method stub
 		
 	}
 

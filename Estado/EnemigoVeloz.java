@@ -6,12 +6,19 @@ public class EnemigoVeloz extends EstadoEnemigo {
 	
 	public EnemigoVeloz(Enemigo e) {
 		super(e);
+		this.velocidad = 6;
 	}
 
-	@Override
 	public void movilizar() {
-		enemigo.movilizar(10);
-		
+		enemigo.movilizar(velocidad);
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}
 
 }

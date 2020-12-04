@@ -20,15 +20,11 @@ public abstract class Enemigo extends Entidad {
 	
 	public Enemigo(int x, int y) {
 		super(x, y);
-		velocidad = 1;
 		visitor = new VisitorEnemigo(this);
 	}
 
 	public void movilizar(int agregadoVelocidad) {
-		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad + agregadoVelocidad);
-		if(this.getPosicion().x < -10) {
-		
-		}
+		this.setPosicion(this.getPosicion().x, this.getPosicion().y + estado.getVelocidad());
 	}
 	
 	public void mover() {
@@ -58,6 +54,10 @@ public abstract class Enemigo extends Entidad {
     	visitor.visitar(this);
     }
     
+    public int getPoder() {
+    	return poder;
+    }
+    
     public void accionar() {
     	//this.reaparecer(xAux, yAux);
     }
@@ -65,6 +65,7 @@ public abstract class Enemigo extends Entidad {
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(6) + 1;
+		n = 2;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 
@@ -87,8 +88,13 @@ public abstract class Enemigo extends Entidad {
 	}
     
     public void reaparecer() {
-    	Point posicion = this.juego.getMapa().posicionAleatoriaEnemigos();
-		this.setPosicion(posicion.x, posicion.y);
+//    	Point posicion = this.juego.getMapa().posicionAleatoriaEnemigos();
+    	this.juego.getMapa().ubicacionDefinitiva(this);
+//		this.setPosicion(posicion.x, posicion.y - 100);
+    }
+    
+    public Estado getEstado() {
+    	return this.estado;
     }
     
     public abstract Enemigo clonar();

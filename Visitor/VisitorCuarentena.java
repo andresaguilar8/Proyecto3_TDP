@@ -22,7 +22,7 @@ public class VisitorCuarentena extends Visitor {
 
 	public void visitar(Enemigo enemigo) {
 		power.agregarAMapeo(enemigo);
-		enemigo.setVelocidad(0);
+		enemigo.getEstado().setVelocidad(0);
 		power.mover();
 	}
 
