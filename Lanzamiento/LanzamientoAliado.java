@@ -8,7 +8,7 @@ public class LanzamientoAliado extends Lanzamiento {
 
 	public LanzamientoAliado(int cargaViral, int x, int y) {
 		super(cargaViral, x, y);
-		velocidad = 10;
+		velocidad = 5;
 		this.label.setSize(4, 4);
 		this.visitor = new VisitorLanzamientoAliado(this);
 	}
@@ -29,22 +29,9 @@ public class LanzamientoAliado extends Lanzamiento {
 		
 	}
 	
-	public void lanzar(LanzamientoEnemigo l) {
-		
-	}
-	
 	public void lanzar(Entidad e) {
-		this.cargaViral = 0;
 		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
-		System.out.println("enemigo recibiendo: "+juego.getPersonaje().getPoderDeDesinfeccion()+" de danio");
-	}
-	
-	public void curar(Entidad e) {
-		
-	}
-
-	public void infectar(Entidad e) {
-		
+		System.out.println("lanzamientoAliado lanzando: "+juego.getPersonaje().getPoderDeDesinfeccion()+" de danio");
 	}
 
 	public void accionar() {
@@ -52,6 +39,14 @@ public class LanzamientoAliado extends Lanzamiento {
 	}
 
 	public void reaparecer() {
+		
+	}
+
+	public void parar() {
+		
+	}
+
+	public void infectar(Entidad e) {
 		
 	}
 

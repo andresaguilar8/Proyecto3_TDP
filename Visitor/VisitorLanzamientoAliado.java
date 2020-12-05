@@ -18,8 +18,8 @@ public class VisitorLanzamientoAliado extends Visitor {
 	}
 
 	public void visitar(Enemigo enemigo) {
+		miEntidad.setCargaViral(0);
 		miEntidad.lanzar(enemigo);
-		this.miEntidad.setCargaViral(0);
 		System.out.println("VisitorLanzamientoAliado visita Enemigo");
 	}
 
@@ -29,6 +29,7 @@ public class VisitorLanzamientoAliado extends Visitor {
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
 		miEntidad.lanzar(lanzamientoEnemigo);
+		this.miEntidad.setCargaViral(0);
 	}
 
 	public void visitar(PowerUp p) {

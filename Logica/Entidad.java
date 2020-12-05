@@ -63,4 +63,6 @@ public abstract class Entidad  {
 	
 	public abstract void accionar();
 
+	public abstract void parar();
+
 }

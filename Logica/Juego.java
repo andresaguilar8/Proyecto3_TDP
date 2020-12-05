@@ -82,12 +82,12 @@ public class Juego {
 				}				
 			}
 			
-			if (e1.getPosicion().y > 550) {
-				e1.accionar();
-			}
-			
 			if(!colisionan) {
 				e1.mover();
+			}
+			
+			if (e1.getPosicion().y > 550) {
+				e1.accionar();
 			}
 		}
 	}

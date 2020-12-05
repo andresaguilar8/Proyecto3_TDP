@@ -41,7 +41,6 @@ public class Beta extends Enemigo {
 
 	public void infectar(Entidad e) {
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaAtacaGif.gif")));
-		System.out.println("beta infectando");
 		e.recibirCargaViral(poder);
 	}
 	
@@ -49,10 +48,6 @@ public class Beta extends Enemigo {
 		return this.poder;
 	}
 	
-    public void parar() {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/BetaParado.png")));
-    }
-
     public Enemigo clonar() {
 		Enemigo clone = new Beta(0,0);
 		return clone;

@@ -53,14 +53,6 @@ public class Personaje extends Entidad {
 	public int getPoderDeDesinfeccion() {
 		return poderDeDesinfeccion;
 	}
-	
-	public void desinfectar(Entidad e) {
-		//e.recibirCura(10);
-	}
-	
-	public ArmaAliado getArma() {
-		return (ArmaAliado) arma;
-	}
 
 	public void setLabel(JLabel label) {
 		this.label = label;
@@ -88,7 +80,7 @@ public class Personaje extends Entidad {
 			arma.setImagenLanzamiento(rutaLanzamiento);
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
-			System.out.println("poder del jugador: "+this.getPoderDeDesinfeccion());
+			System.out.println("jugador lanzando, poder del jugador: "+this.getPoderDeDesinfeccion());
 		}
 	}
 	
@@ -135,6 +127,26 @@ public class Personaje extends Entidad {
 	}
 
 	public void reaparecer() {
+		
+	}
+
+	public void parar() {
+		
+	}
+
+	public void setCurar(boolean b) {
+		this.curar = b;
+	}
+
+	public int getDesplazamientoX() {
+		return this.desplazamientoX;
+	}
+
+	public int getVelocidad() {
+		return this.velocidad;
+	}
+
+	public void setDesplazamientoX(int desplazamientoX) {
 		
 	}
 

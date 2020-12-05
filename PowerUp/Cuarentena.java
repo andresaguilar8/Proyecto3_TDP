@@ -22,10 +22,8 @@ public class Cuarentena extends PowerUp implements Runnable {
 
 	public void run() {
 		
-		for(Entidad e: juego.getMapa().getListaEnemigos()) { 
+		for(Entidad e: juego.getMapa().getListaEnemigos()) 
 			e.aceptar(visitor);
-		}
-		
 		try {
 			Thread.sleep(2000);
 		}
@@ -34,15 +32,19 @@ public class Cuarentena extends PowerUp implements Runnable {
 		}
 		for (Map.Entry<Enemigo, Integer> entry: mapeo.entrySet()) {
 				entry.getKey().getEstado().setVelocidad(entry.getValue());
-				System.out.println(entry.getValue());
 		}
+		
 	}
 	
 	public void realizarAccion() {
 		(new Thread(this)).start();
 	}
-
+	
+	
 	public void agregarAMapeo(Enemigo e) {
-		mapeo.put(e, e.getEstado().getVelocidad());
+		if (e.getEstado().getVelocidad() != 0) {
+			mapeo.put(e, e.getEstado().getVelocidad());
+//			e.parar();
+		}	
 	}
 }

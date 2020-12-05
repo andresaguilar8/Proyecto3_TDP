@@ -1,7 +1,6 @@
 package Enemigo;
 
 import java.awt.Point;
-
 import java.util.Random;
 import Estado.Estado;
 import Logica.Entidad;
@@ -65,7 +64,6 @@ public abstract class Enemigo extends Entidad {
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(6) + 1;
-		n = 2;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 
@@ -88,9 +86,9 @@ public abstract class Enemigo extends Entidad {
 	}
     
     public void reaparecer() {
-//    	Point posicion = this.juego.getMapa().posicionAleatoriaEnemigos();
+    	Point lugar = this.juego.getMapa().posicionAleatoriaEnemigos();
+		this.setPosicion(lugar.x, lugar.y);
     	this.juego.getMapa().ubicacionDefinitiva(this);
-//		this.setPosicion(posicion.x, posicion.y - 100);
     }
     
     public Estado getEstado() {

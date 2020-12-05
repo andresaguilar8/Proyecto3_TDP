@@ -61,4 +61,10 @@ public class PowerUp extends Entidad {
 		
 	}
 
+	@Override
+	public void parar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

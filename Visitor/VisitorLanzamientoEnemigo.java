@@ -22,7 +22,7 @@ public class VisitorLanzamientoEnemigo extends Visitor {
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		miEntidad.recibirCura(100);
+//		miEntidad.recibirCura(100);
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {

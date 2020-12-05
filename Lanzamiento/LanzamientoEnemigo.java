@@ -43,4 +43,10 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		
 	}
 
+	@Override
+	public void parar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -14,7 +14,7 @@ public class VisitorPersonaje extends Visitor {
 	}
 
 	public void visitar(Enemigo e) {
-		//e.infectar(miEntidad);
+
 	}
 
 	public void visitar(Personaje e) {

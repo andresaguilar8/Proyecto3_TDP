@@ -22,20 +22,10 @@ public class Alpha extends Enemigo {
     }
 
 	public void infectar(Entidad e) {
-		System.out.println("alpha infecta");
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
-		e.recibirCargaViral(poder);
-		
+		e.recibirCargaViral(this.poder);
 	}
 	
-    public void atacar(Entidad e) {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaAtacaGif.gif")));
-    }
-
-    public void parar() {
-        label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlfaParado.png")));
-    }
-
     public int getPoder() {
     	return this.poder;
     }

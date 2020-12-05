@@ -15,7 +15,6 @@ public class VisitorEnemigo extends Visitor {
 	
 	public void visitar(Personaje p) {
 		miEntidad.infectar(p);
-		System.out.println("enemigo infectando pj");
 	}
 
 	public void visitar(Enemigo enemigo) {
@@ -23,8 +22,7 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		System.out.println("HOLAAA");
-//		miEntidad.setCargaViral();
+		lanzamientoAliado.setCargaViral(0);
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {
@@ -32,7 +30,7 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	public void visitar(PowerUp p) {
-		miEntidad.mover();
+		
 	}
 	
 }
