@@ -40,11 +40,9 @@ public class Cuarentena extends PowerUp implements Runnable {
 		(new Thread(this)).start();
 	}
 	
-	
 	public void agregarAMapeo(Enemigo e) {
-		if (e.getEstado().getVelocidad() != 0) {
+		if (e.getEstado().getVelocidad() != 0) 
 			mapeo.put(e, e.getEstado().getVelocidad());
-//			e.parar();
-		}	
 	}
+	
 }

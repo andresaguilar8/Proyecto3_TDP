@@ -1,6 +1,7 @@
 package PowerUp;
 
 import javax.swing.ImageIcon;
+
 import Logica.PowerUp;
 
 public class Curacion extends PowerUp {

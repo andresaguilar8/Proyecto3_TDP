@@ -95,13 +95,12 @@ public class Juego {
 	
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
-		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
-		Rectangle r1= entidad_1.getLabel().getBounds();
-		r1.height/=2.15;
-		r1.width/=3;
-		Rectangle r2= entidad_2.getLabel().getBounds();
-		r2.height/=2.15;
-		r2.width/=2;
+		Rectangle r1 = entidad_1.getLabel().getBounds();
+		r1.height /= 2.15;
+		r1.width /= 3;
+		Rectangle r2 = entidad_2.getLabel().getBounds();
+		r2.height /= 2.15;
+		r2.width /= 2;
 		return r1.intersects(r2);
 	}
 	
@@ -110,17 +109,22 @@ public class Juego {
 			entidadesAeliminar.add(personaje);
 		}
 		
-		for(Entidad e: listaEntidades) { 
+		@SuppressWarnings("unchecked")
+		
+		LinkedList<Entidad> lista = (LinkedList<Entidad>) listaEntidades.clone();
+		for(Entidad e: lista) { 
 			if (e != personaje)
 				if(e.getCargaViral() <= 0) {
 					entidadesAeliminar.add(e);
 				}
 			}
+		
 		eliminarAux(entidadesAeliminar);
 	}
 	
 	private void eliminarAux(LinkedList<Entidad> lista) {
 		@SuppressWarnings("unchecked")
+		
 		LinkedList<Entidad> aux = (LinkedList<Entidad>) entidadesAeliminar.clone();
 		entidadesAeliminar = new LinkedList<Entidad>();
 		for(Entidad e: aux) {
@@ -128,6 +132,7 @@ public class Juego {
 			mapa.eliminarEnemigo(e);
 			listaEntidades.remove(e);
 		}
+		
 		entidadesAeliminar.clear();
 	}
 	

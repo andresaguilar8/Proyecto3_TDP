@@ -19,6 +19,4 @@ public class ArmaAliado extends Arma{
 		this.ruta = ruta;
 	}
 	
-
-	
 }

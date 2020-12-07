@@ -30,10 +30,6 @@ public abstract class Enemigo extends Entidad {
 		estado.movilizar();
 	}
 
-    public void parar() {
-        this.setPosicion(this.getPosicion().x,  this.getPosicion().y);
-    }
-
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
@@ -58,7 +54,7 @@ public abstract class Enemigo extends Entidad {
     }
     
     public void accionar() {
-    	//this.reaparecer(xAux, yAux);
+    	this.reaparecer();
     }
     
     protected void lanzarPowerUp() {

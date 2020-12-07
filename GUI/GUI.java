@@ -27,7 +27,6 @@ public class GUI extends JFrame {
 	protected HiloTiempo tiempo;
 	public static Dimension size = new Dimension(1250, 790);
 
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,6 +54,7 @@ public class GUI extends JFrame {
 		iniciarKeyListener();
 		
 	}
+	
 	public void setearConsideracionesGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 500, 600);
@@ -71,6 +71,13 @@ public class GUI extends JFrame {
 		repaint();
 	}
 	
+	public void ganar() {
+		ganar = new JLabel();
+		ganar.setBounds(110,0,580,720);
+		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
+		terminarJuego(ganar);
+	}
+	
 	public void gameOver() {
 		gameOver = new JLabel();
 		gameOver.setBounds(0,0,1280,720);
@@ -84,10 +91,20 @@ public class GUI extends JFrame {
 		repaint();
 	}
 	
+	public void eliminarEnemigo(Entidad aEliminar) {
+		panelActual.remove(aEliminar.getLabel());
+		repaint();
+	}
+	
 	private Container getPanelActual() {
 		return panelActual;
 	}
 
+	public void setPanelActual(JPanelConFondo panelActual) {
+		this.panelActual = (JPanelConFondo) panelActual;
+		this.setVisible(true);
+	}
+	
 	private void terminarJuego(JLabel label) {
 		JButton volverAJugar = new JButton();
 		volverAJugar.setBounds(140, 130, 230, 36);
@@ -128,13 +145,6 @@ public class GUI extends JFrame {
 		this.repaint();
 	}
 	
-	public void ganar() {
-		ganar = new JLabel();
-		ganar.setBounds(110,0,580,720);
-		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
-		terminarJuego(ganar);
-	}
-	
 	private void iniciarKeyListener() {
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
@@ -145,17 +155,5 @@ public class GUI extends JFrame {
 			 }
 		});
 	}
-		
-	public void eliminarEnemigo(Entidad aEliminar) {
-		panelActual.remove(aEliminar.getLabel());
-		repaint();
-	}
-
-
-	public void setPanelActual(JPanelConFondo panelActual) {
-		this.panelActual = (JPanelConFondo) panelActual;
-		this.setVisible(true);
-	}
-	
 	
 }
