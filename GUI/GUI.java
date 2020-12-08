@@ -23,10 +23,10 @@ public class GUI extends JFrame {
 	protected JPanel contentPane;
 	protected JLabel etiquetaGradoDeInfeccion, gameOver, ganar;
 	protected JPanelConFondo panelActual;
-	protected String panelesNiveles [];
 	protected Juego juego;
 	protected HiloTiempo tiempo;
 	public static Dimension size = new Dimension(1250, 790);
+
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,6 +43,7 @@ public class GUI extends JFrame {
 
 
 	public GUI() {
+
 		setearConsideracionesGUI();
 		inicializarJuegoGraficamente();
 		
@@ -52,8 +53,8 @@ public class GUI extends JFrame {
 		tiempo.start();	
 		
 		iniciarKeyListener();
+		
 	}
-	
 	public void setearConsideracionesGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 500, 600);
@@ -70,28 +71,6 @@ public class GUI extends JFrame {
 		repaint();
 	}
 	
-	public void setMapaUno() {
-		JPanelConFondo nivel_1 = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_1.jpeg")).getImage());
-		nivel_1.setBounds(500, 100, 500, 600);
-		this.getContentPane().add(nivel_1);
-		this.setPanelActual(nivel_1);
-	}
-	
-	public void setMapaDos() {
-		this.getContentPane().removeAll(); 
-		JPanelConFondo nivel_2 = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_2.jpg")).getImage());
-		nivel_2.setBounds(500, 100, 500, 600);
-		this.getContentPane().add(nivel_2);
-		this.setPanelActual(nivel_2);
-	}
-	
-	public void ganar() {
-		ganar = new JLabel();
-		ganar.setBounds(110,0,580,720);
-		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
-		terminarJuego(ganar);
-	}
-	
 	public void gameOver() {
 		gameOver = new JLabel();
 		gameOver.setBounds(0,0,1280,720);
@@ -105,20 +84,10 @@ public class GUI extends JFrame {
 		repaint();
 	}
 	
-	public void eliminarEnemigo(Entidad aEliminar) {
-		panelActual.remove(aEliminar.getLabel());
-		repaint();
-	}
-	
 	private Container getPanelActual() {
 		return panelActual;
 	}
 
-	public void setPanelActual(JPanelConFondo panelActual) {
-		this.panelActual = (JPanelConFondo) panelActual;
-		this.setVisible(true);
-	}
-	
 	private void terminarJuego(JLabel label) {
 		JButton volverAJugar = new JButton();
 		volverAJugar.setBounds(140, 130, 230, 36);
@@ -159,6 +128,13 @@ public class GUI extends JFrame {
 		this.repaint();
 	}
 	
+	public void ganar() {
+		ganar = new JLabel();
+		ganar.setBounds(110,0,580,720);
+		ganar.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/win.png")));
+		terminarJuego(ganar);
+	}
+	
 	private void iniciarKeyListener() {
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
@@ -169,5 +145,17 @@ public class GUI extends JFrame {
 			 }
 		});
 	}
+		
+	public void eliminarEnemigo(Entidad aEliminar) {
+		panelActual.remove(aEliminar.getLabel());
+		repaint();
+	}
+
+
+	public void setPanelActual(JPanelConFondo panelActual) {
+		this.panelActual = (JPanelConFondo) panelActual;
+		this.setVisible(true);
+	}
+	
 	
 }

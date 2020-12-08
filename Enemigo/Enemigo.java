@@ -30,6 +30,10 @@ public abstract class Enemigo extends Entidad {
 		estado.movilizar();
 	}
 
+    public void parar() {
+        this.setPosicion(this.getPosicion().x,  this.getPosicion().y);
+    }
+
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
@@ -54,13 +58,12 @@ public abstract class Enemigo extends Entidad {
     }
     
     public void accionar() {
-    	this.reaparecer();
+    	//this.reaparecer(xAux, yAux);
     }
     
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(6) + 1;
-		n = 3;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 

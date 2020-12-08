@@ -57,10 +57,12 @@ public abstract class Entidad  {
 
 	public abstract void recibirCargaViral(int i);
 
-    public abstract void infectar(Entidad e);
+	public abstract void infectar(Entidad e);
 
 	public abstract void lanzar(Entidad e);
 	
 	public abstract void accionar();
+
+	public abstract void parar();
 
 }

@@ -22,7 +22,7 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	public void visitar(LanzamientoAliado lanzamientoAliado) {
-		
+		lanzamientoAliado.setCargaViral(0);
 	}
 
 	public void visitar(LanzamientoEnemigo lanzamientoEnemigo) {

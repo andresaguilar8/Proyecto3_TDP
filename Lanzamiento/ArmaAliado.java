@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class ArmaAliado extends Arma{
 	
-	public String ruta = "/Imagenes/LanzamientoPersonajeGif.gif";
+	public String ruta = "";
 	
 	public Lanzamiento crearLanzamiento(Point pos, int cargaViral) {
 		LanzamientoAliado lanzamiento = new LanzamientoAliado(cargaViral, pos.x + 22, pos.y - 25);
@@ -18,5 +18,7 @@ public class ArmaAliado extends Arma{
 	public void setImagenLanzamiento(String ruta) {
 		this.ruta = ruta;
 	}
+	
+
 	
 }

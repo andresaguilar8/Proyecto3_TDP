@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import Enemigo.Enemigo;
-import GUI.JPanelConFondo;
 import Logica.Entidad;
 import Logica.Juego;
 
@@ -40,6 +39,7 @@ public abstract class Mapa {
 			if(!hayColisionesConOtrosPersonajes(nuevo, entidades)) {
 				listaEnemigos.addLast(nuevo);
 				entidades.addLast(nuevo);
+				System.out.println("no hay colisiones");
 			}
 		}
 		return entidades;
@@ -71,6 +71,7 @@ public abstract class Mapa {
 	
 	public void ubicacionDefinitiva(Entidad nuevo) {
 		Rectangle rectangulo = nuevo.getLabel().getBounds();
+		//System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
 		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+60, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-470);
 	}
 	

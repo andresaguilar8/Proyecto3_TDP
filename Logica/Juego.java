@@ -14,7 +14,6 @@ public class Juego {
 	public Mapa mapa;
 	private HiloTiempo tiempo;
 	protected Personaje personaje;
-	protected int cantidadNiveles;
 	
 	public Juego(GUI gui) {
 		this.gui = gui;
@@ -24,7 +23,6 @@ public class Juego {
 		entidadesAeliminar = new LinkedList<Entidad>();
 		lanzamientosPendientes = new LinkedList<Entidad>();
 		listaLanzamientos = new LinkedList<Entidad>();
-		cantidadNiveles = 2;
 		iniciarEntidades();
 		inicializarPersonaje();
 	}
@@ -62,10 +60,6 @@ public class Juego {
 		this.tiempo = tiempo;
 	}
 	
-	public int getCantidadNiveles() {
-		return this.cantidadNiveles;
-	}
-	
 	public void accionar() {
 		this.colisionar();
 		this.agregarEntidades();
@@ -98,13 +92,16 @@ public class Juego {
 		}
 	}
 	
+	
+	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
-		Rectangle r1 = entidad_1.getLabel().getBounds();
-		r1.height /= 2.15;
-		r1.width /= 3;
-		Rectangle r2 = entidad_2.getLabel().getBounds();
-		r2.height /= 2.15;
-		r2.width /= 2;
+		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
+		Rectangle r1= entidad_1.getLabel().getBounds();
+		r1.height/=2.15;
+		r1.width/=3;
+		Rectangle r2= entidad_2.getLabel().getBounds();
+		r2.height/=2.15;
+		r2.width/=2;
 		return r1.intersects(r2);
 	}
 	
@@ -113,22 +110,17 @@ public class Juego {
 			entidadesAeliminar.add(personaje);
 		}
 		
-		@SuppressWarnings("unchecked")
-		
-		LinkedList<Entidad> lista = (LinkedList<Entidad>) listaEntidades.clone();
-		for(Entidad e: lista) { 
+		for(Entidad e: listaEntidades) { 
 			if (e != personaje)
 				if(e.getCargaViral() <= 0) {
 					entidadesAeliminar.add(e);
 				}
 			}
-		
 		eliminarAux(entidadesAeliminar);
 	}
 	
 	private void eliminarAux(LinkedList<Entidad> lista) {
 		@SuppressWarnings("unchecked")
-		
 		LinkedList<Entidad> aux = (LinkedList<Entidad>) entidadesAeliminar.clone();
 		entidadesAeliminar = new LinkedList<Entidad>();
 		for(Entidad e: aux) {
@@ -136,7 +128,6 @@ public class Juego {
 			mapa.eliminarEnemigo(e);
 			listaEntidades.remove(e);
 		}
-		
 		entidadesAeliminar.clear();
 	}
 	

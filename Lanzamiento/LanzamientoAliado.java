@@ -21,12 +21,17 @@ public class LanzamientoAliado extends Lanzamiento {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y - velocidad);
 	}
 
-	public void lanzar(Entidad e) {
-		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
-	}
+	public void reaparecer(int xAux, int yAux) {
 		
+	}
+	
 	public void recibirCargaViral(int i) {
 		
+	}
+	
+	public void lanzar(Entidad e) {
+		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
+		System.out.println("lanzamientoAliado lanzando: "+juego.getPersonaje().getPoderDeDesinfeccion()+" de danio");
 	}
 
 	public void accionar() {
@@ -34,6 +39,10 @@ public class LanzamientoAliado extends Lanzamiento {
 	}
 
 	public void reaparecer() {
+		
+	}
+
+	public void parar() {
 		
 	}
 

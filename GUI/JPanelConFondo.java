@@ -24,6 +24,7 @@ public class JPanelConFondo extends JPanel {
         setLayout(null);
     }
 
+
     public void paint(Graphics g) {
         g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
         setOpaque(false);

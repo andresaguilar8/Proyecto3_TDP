@@ -21,11 +21,6 @@ public class LanzamientoEnemigo extends Lanzamiento {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
 	}
 
-	public void lanzar(Entidad e) {
-		e.recibirCargaViral(cargaViral);
-		this.cargaViral = 0;
-	}
-	
 	public void recibirCargaViral(int i) {
 		
 	}
@@ -33,12 +28,24 @@ public class LanzamientoEnemigo extends Lanzamiento {
 	public void infectar(Entidad e) {
 		
 	}
-	
+
+	public void lanzar(Entidad e) {
+		e.recibirCargaViral(7);
+		System.out.println("lanzamiento enemigo infectando al personaje");
+		this.cargaViral = 0;
+	}
+
 	public void accionar() {
 		this.setCargaViral(0);
 	}
 
 	public void reaparecer() {
+		
+	}
+
+	@Override
+	public void parar() {
+		// TODO Auto-generated method stub
 		
 	}
 

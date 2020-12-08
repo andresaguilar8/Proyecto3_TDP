@@ -15,7 +15,8 @@ public class VisitorCuracion extends Visitor {
 	}
 	
 	public void visitar(Personaje e) {
-		e.setCargaViral(0);
+		powerUp.curar(e);
+		System.out.println("PERSONAJE CURADO");
 		powerUp.setCargaViral(0);
 	}
 

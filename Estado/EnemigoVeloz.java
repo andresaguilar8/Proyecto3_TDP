@@ -6,7 +6,7 @@ public class EnemigoVeloz extends EstadoEnemigo {
 	
 	public EnemigoVeloz(Enemigo e) {
 		super(e);
-		this.velocidad = 4;
+		this.velocidad = 6;
 	}
 
 	public void movilizar() {
