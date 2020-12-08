@@ -22,7 +22,7 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 	}
 	
 	public void run() {
-		personaje.setRutaLanzamiento("/Imagenes/superArma.gif");
+		personaje.getArma().setImagenLanzamiento("/Imagenes/superArma.gif");
 		personaje.setPoderDeDesinfeccion(personaje.getPoderDeDesinfeccion() + this.getMejora());
 		try {
 			Thread.sleep(4000);
@@ -31,7 +31,7 @@ public class SuperArmaSanitaria extends PowerUp implements Runnable {
 			e.printStackTrace();
 		}
 		personaje.setPoderDeDesinfeccion(personaje.getPoderDeDesinfeccion() - this.getMejora());
-		personaje.setRutaLanzamiento("/Imagenes/LanzamientoPersonajeGif.gif");
+		personaje.getArma().setImagenLanzamiento("/Imagenes/LanzamientoPersonajeGif.gif");
 	}
 	
 	public int getMejora() {

@@ -60,6 +60,7 @@ public abstract class Enemigo extends Entidad {
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(6) + 1;
+		n = 3;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 

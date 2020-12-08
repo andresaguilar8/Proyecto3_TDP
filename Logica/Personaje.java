@@ -31,7 +31,6 @@ public class Personaje extends Entidad {
 		curar = false;
 		contador = 0;
 		poderDeDesinfeccion = 40;
-		rutaLanzamiento = "/Imagenes/LanzamientoPersonajeGif.gif";
 	}
 	
 	public int getCargaViral() {
@@ -69,11 +68,14 @@ public class Personaje extends Entidad {
         
         label.setLocation(pos.x + desplazamientoX, pos.y);
 	}
-
+	
+	public Arma getArma() {
+		return this.arma;
+	}
+	
 	public void lanzar(Entidad e) {
 		contador++;
 		if(contador >= 20 && curar) {
-			arma.setImagenLanzamiento(rutaLanzamiento);
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
 		}

@@ -23,6 +23,7 @@ public class GUI extends JFrame {
 	protected JPanel contentPane;
 	protected JLabel etiquetaGradoDeInfeccion, gameOver, ganar;
 	protected JPanelConFondo panelActual;
+	protected String panelesNiveles [];
 	protected Juego juego;
 	protected HiloTiempo tiempo;
 	public static Dimension size = new Dimension(1250, 790);
@@ -42,7 +43,6 @@ public class GUI extends JFrame {
 
 
 	public GUI() {
-
 		setearConsideracionesGUI();
 		inicializarJuegoGraficamente();
 		
@@ -52,7 +52,6 @@ public class GUI extends JFrame {
 		tiempo.start();	
 		
 		iniciarKeyListener();
-		
 	}
 	
 	public void setearConsideracionesGUI() {
@@ -69,6 +68,21 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		
 		repaint();
+	}
+	
+	public void setMapaUno() {
+		JPanelConFondo nivel_1 = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_1.jpeg")).getImage());
+		nivel_1.setBounds(500, 100, 500, 600);
+		this.getContentPane().add(nivel_1);
+		this.setPanelActual(nivel_1);
+	}
+	
+	public void setMapaDos() {
+		this.getContentPane().removeAll(); 
+		JPanelConFondo nivel_2 = new JPanelConFondo(new ImageIcon(getClass().getResource("/Imagenes/mapa_2.jpg")).getImage());
+		nivel_2.setBounds(500, 100, 500, 600);
+		this.getContentPane().add(nivel_2);
+		this.setPanelActual(nivel_2);
 	}
 	
 	public void ganar() {

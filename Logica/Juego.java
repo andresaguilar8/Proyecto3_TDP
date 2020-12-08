@@ -14,6 +14,7 @@ public class Juego {
 	public Mapa mapa;
 	private HiloTiempo tiempo;
 	protected Personaje personaje;
+	protected int cantidadNiveles;
 	
 	public Juego(GUI gui) {
 		this.gui = gui;
@@ -23,6 +24,7 @@ public class Juego {
 		entidadesAeliminar = new LinkedList<Entidad>();
 		lanzamientosPendientes = new LinkedList<Entidad>();
 		listaLanzamientos = new LinkedList<Entidad>();
+		cantidadNiveles = 2;
 		iniciarEntidades();
 		inicializarPersonaje();
 	}
@@ -60,6 +62,10 @@ public class Juego {
 		this.tiempo = tiempo;
 	}
 	
+	public int getCantidadNiveles() {
+		return this.cantidadNiveles;
+	}
+	
 	public void accionar() {
 		this.colisionar();
 		this.agregarEntidades();
@@ -91,8 +97,6 @@ public class Juego {
 			}
 		}
 	}
-	
-	
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		Rectangle r1 = entidad_1.getLabel().getBounds();
