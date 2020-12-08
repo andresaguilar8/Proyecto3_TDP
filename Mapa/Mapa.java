@@ -71,7 +71,6 @@ public abstract class Mapa {
 	
 	public void ubicacionDefinitiva(Entidad nuevo) {
 		Rectangle rectangulo = nuevo.getLabel().getBounds();
-		//System.out.println("rectangulo bounds: / x: "+nuevo.getLabel().getBounds().x+" y: "+nuevo.getLabel().getBounds().y);
 		nuevo.setPosicion(rectangulo.x-rectangulo.width/2+60, (((int)(rectangulo.y/anchoColumna))*anchoColumna)-470);
 	}
 	

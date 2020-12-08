@@ -21,8 +21,6 @@ public class Juego {
 		listaEntidades= new LinkedList<Entidad>();
 		entidadesPendientes = new LinkedList<Entidad>();
 		entidadesAeliminar = new LinkedList<Entidad>();
-		lanzamientosPendientes = new LinkedList<Entidad>();
-		listaLanzamientos = new LinkedList<Entidad>();
 		iniciarEntidades();
 		inicializarPersonaje();
 	}
@@ -92,8 +90,6 @@ public class Juego {
 		}
 	}
 	
-	
-	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
 		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
 		Rectangle r1= entidad_1.getLabel().getBounds();
@@ -116,6 +112,7 @@ public class Juego {
 					entidadesAeliminar.add(e);
 				}
 			}
+		
 		eliminarAux(entidadesAeliminar);
 	}
 	
@@ -141,14 +138,6 @@ public class Juego {
 	
 	public GUI getGUI() {
 		return this.gui;
-	}
-	
-	public LinkedList<Entidad> getListaEntidadesPendientes() {
-		return entidadesPendientes;
-	}
-	
-	public LinkedList<Entidad> getListaEntidadesAeliminar() {
-		return entidadesAeliminar;
 	}
 	
 	public Personaje getPersonaje() {
@@ -183,4 +172,5 @@ public class Juego {
 			tiempo.finalizar();
 		}
 	}
+	
 }

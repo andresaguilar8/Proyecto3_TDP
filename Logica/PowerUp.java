@@ -1,7 +1,5 @@
 package Logica;
 
-import java.awt.event.KeyEvent;
-
 import Visitor.Visitor;
 import Visitor.VisitorCuracion;
 
@@ -23,18 +21,10 @@ public class PowerUp extends Entidad {
 		this.setPosicion(this.getPosicion().x, this.getPosicion().y + velocidad);
 	}
 
-	public void keyPressed(KeyEvent arg0) {
-		
+	public void accionar() {
+		this.setCargaViral(0);
 	}
-
-	public void keyReleased(KeyEvent arg0) {
-		
-	}
-
-	public void reaparecer(int xAux, int yAux) {
-		
-	}
-
+	
 	public void recibirCargaViral(int i) {
 		
 	}
@@ -44,26 +34,6 @@ public class PowerUp extends Entidad {
 	}
 
 	public void lanzar(Entidad e) {
-		
-	}
-
-	public void curar(Entidad e) {
-		
-	}
-
-	public void accionar() {
-		this.setCargaViral(0);
-	}
-
-	@Override
-	public void reaparecer() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void parar() {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -53,8 +53,6 @@ public abstract class Entidad  {
 	
 	public abstract void mover();
 
-	public abstract void reaparecer();
-
 	public abstract void recibirCargaViral(int i);
 
 	public abstract void infectar(Entidad e);
@@ -62,7 +60,5 @@ public abstract class Entidad  {
 	public abstract void lanzar(Entidad e);
 	
 	public abstract void accionar();
-
-	public abstract void parar();
 
 }

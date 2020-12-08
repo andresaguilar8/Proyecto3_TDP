@@ -42,20 +42,16 @@ public class Alpha extends Enemigo {
     	}
 	}
 
+	public void accionar() {
+		super.accionar();
+	}
+	
 	public void recibirCargaViral(int i) {
 		
 	}
 	
-	public void reaparecer() {
-		super.reaparecer();
-	}
-
 	public void lanzar(Entidad e) {
 		
-	}
-
-	public void accionar() {
-		this.reaparecer();
 	}
 
 }

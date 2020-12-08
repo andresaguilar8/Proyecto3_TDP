@@ -52,17 +52,14 @@ public class Beta extends Enemigo {
 		Enemigo clone = new Beta(0,0);
 		return clone;
 	}
-
-	public void reaparecer() {
-		super.reaparecer();
+    
+    public void accionar() {
+		super.accionar();
 	}
 
 	public void recibirCargaViral(int i) {
 		
 	}
 
-	public void accionar() {
-		this.reaparecer();
-	}
-
+	
 }

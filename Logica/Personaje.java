@@ -32,6 +32,7 @@ public class Personaje extends Entidad {
 		contador = 0;
 		poderDeDesinfeccion = 40;
 		rutaLanzamiento = "/Imagenes/LanzamientoPersonajeGif.gif";
+		arma.setImagenLanzamiento(rutaLanzamiento);
 	}
 	
 	public int getCargaViral() {
@@ -74,24 +75,18 @@ public class Personaje extends Entidad {
 		visitor.visitar(this);
 	}
 
+	public Arma getArma() {
+		return this.arma;
+	}
+	
 	public void lanzar(Entidad e) {
 		contador++;
 		if(contador >= 20 && curar) {
-			arma.setImagenLanzamiento(rutaLanzamiento);
 			juego.agregarObjetos(arma.crearLanzamiento(this.getPosicion(), poderDeDesinfeccion));
 			contador = 0;
-			System.out.println("jugador lanzando, poder del jugador: "+this.getPoderDeDesinfeccion());
 		}
 	}
-	
-	public void reaparecer(int xAux, int yAux) {
-		
-	}
 
-	public void infectar(Entidad e) {
-		
-	}
-	
 	public void keyPressed(KeyEvent e) {
 	    int key = e.getKeyCode();
 	    switch (key){
@@ -126,28 +121,11 @@ public class Personaje extends Entidad {
 		
 	}
 
-	public void reaparecer() {
-		
-	}
-
 	public void parar() {
 		
 	}
 
-	public void setCurar(boolean b) {
-		this.curar = b;
-	}
-
-	public int getDesplazamientoX() {
-		return this.desplazamientoX;
-	}
-
-	public int getVelocidad() {
-		return this.velocidad;
-	}
-
-	public void setDesplazamientoX(int desplazamientoX) {
+	public void infectar(Entidad e) {
 		
 	}
-
 }

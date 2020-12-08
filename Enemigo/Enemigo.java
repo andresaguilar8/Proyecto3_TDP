@@ -58,12 +58,15 @@ public abstract class Enemigo extends Entidad {
     }
     
     public void accionar() {
-    	//this.reaparecer(xAux, yAux);
+    	Point lugar = this.juego.getMapa().posicionAleatoriaEnemigos();
+		this.setPosicion(lugar.x, lugar.y);
+    	this.juego.getMapa().ubicacionDefinitiva(this);
     }
     
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
 		int n = numAleatorio.nextInt(6) + 1;
+		n = 1;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 
@@ -84,12 +87,6 @@ public abstract class Enemigo extends Entidad {
     public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-    
-    public void reaparecer() {
-    	Point lugar = this.juego.getMapa().posicionAleatoriaEnemigos();
-		this.setPosicion(lugar.x, lugar.y);
-    	this.juego.getMapa().ubicacionDefinitiva(this);
-    }
     
     public Estado getEstado() {
     	return this.estado;

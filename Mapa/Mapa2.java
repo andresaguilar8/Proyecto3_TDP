@@ -1,7 +1,6 @@
 package Mapa;
 
 import javax.swing.ImageIcon;
-
 import Enemigo.Alpha;
 import Enemigo.Beta;
 import Enemigo.Enemigo;
