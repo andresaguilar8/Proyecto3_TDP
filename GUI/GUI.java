@@ -54,6 +54,8 @@ public class GUI extends JFrame {
 		
 		iniciarKeyListener();
 		
+		inicializarIconoYNombre();
+		
 	}
 	public void setearConsideracionesGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,6 +157,14 @@ public class GUI extends JFrame {
 	public void setPanelActual(JPanelConFondo panelActual) {
 		this.panelActual = (JPanelConFondo) panelActual;
 		this.setVisible(true);
+	}
+	
+	private void inicializarIconoYNombre() {
+		ImageIcon icono = new ImageIcon("Imagenes/icono.jpg");
+		this.setIconImage(icono.getImage());
+		
+		this.setTitle("Plague Inc: Envolved");
+		
 	}
 	
 	
