@@ -24,6 +24,8 @@ public class Personaje extends Entidad {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/personaje.png")));
 		this.label.setSize(90, 90);
+		ancho = 40;
+		alto = 40;
 		cargaViral = 0;
 		velocidad = 5;
 		visitor = new VisitorPersonaje(this);

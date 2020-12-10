@@ -1,6 +1,8 @@
 package Logica;
 
 import java.awt.Point;
+import java.awt.Rectangle;
+
 import javax.swing.JLabel;
 import Visitor.Visitor;
 
@@ -11,10 +13,11 @@ public abstract class Entidad  {
 	protected Juego juego;
 	protected Visitor visitor;
 	int velocidad;
+	protected int ancho, alto;
 	
 	public Entidad(int x, int y) {
 		label = new JLabel();
-		setPosicion(x,y);	
+		setPosicion(x,y);
 	}
 	
 	public JLabel getLabel() {
@@ -27,6 +30,10 @@ public abstract class Entidad  {
 		
 	public Point getPosicion() {
 		return label.getLocation();
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(label.getX(), label.getY(), ancho, alto);
 	}
 	
 	public int getCargaViral() {

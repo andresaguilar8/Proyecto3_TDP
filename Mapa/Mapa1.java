@@ -11,7 +11,7 @@ public class Mapa1 extends Mapa{
 
 	public Mapa1(Juego juego) {
 		super(juego);
-		cantEnemigos = 7;
+		cantEnemigos = 12;
 		enemigos = new Enemigo[cantEnemigos];
 		enemigos[0] = new Alpha(0,0);
 		enemigos[1] = new Beta(0,0);

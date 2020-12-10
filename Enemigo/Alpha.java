@@ -10,7 +10,7 @@ public class Alpha extends Enemigo {
 	public Alpha(int x, int y) {
 		super(x, y);
 		label.setIcon(new ImageIcon(getClass().getResource("/Imagenes/AlphaCaminaGif.gif")));
-		label.setBounds(x, y, 117, 110);
+		label.setBounds(x, y, 90, 90);
 		cargaViral = 100;
 		poder = 3;
 		estado = new EnemigoNormal(this);

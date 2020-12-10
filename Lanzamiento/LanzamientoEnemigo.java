@@ -8,8 +8,10 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	public LanzamientoEnemigo(int cargaViral, int x, int y) {
 		super(cargaViral, x, y);
-		velocidad = 2;
+		velocidad = 4;
 		this.label.setSize(4, 4);
+		ancho = 15;
+		alto = 7;
 		this.visitor = new VisitorLanzamientoEnemigo(this);
 	}
 
@@ -23,7 +25,6 @@ public class LanzamientoEnemigo extends Lanzamiento {
 
 	public void lanzar(Entidad e) {
 		e.recibirCargaViral(7);
-		System.out.println("lanzamiento enemigo infectando al personaje");
 		this.cargaViral = 0;
 	}
 

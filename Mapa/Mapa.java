@@ -39,7 +39,6 @@ public abstract class Mapa {
 			if(!hayColisionesConOtrosPersonajes(nuevo, entidades)) {
 				listaEnemigos.addLast(nuevo);
 				entidades.addLast(nuevo);
-				System.out.println("no hay colisiones");
 			}
 		}
 		return entidades;

@@ -10,7 +10,7 @@ import Mapa.Mapa1;
 public class Juego {
 
 	public GUI gui;
-	public LinkedList<Entidad> listaEntidades, entidadesPendientes, entidadesAeliminar, listaLanzamientos, lanzamientosPendientes;
+	public LinkedList<Entidad> listaEntidades, entidadesPendientes, entidadesAeliminar;
 	public Mapa mapa;
 	private HiloTiempo tiempo;
 	protected Personaje personaje;
@@ -18,7 +18,7 @@ public class Juego {
 	public Juego(GUI gui) {
 		this.gui = gui;
 		this.mapa = new Mapa1(this);
-		listaEntidades= new LinkedList<Entidad>();
+		listaEntidades = new LinkedList<Entidad>();
 		entidadesPendientes = new LinkedList<Entidad>();
 		entidadesAeliminar = new LinkedList<Entidad>();
 		iniciarEntidades();
@@ -62,7 +62,6 @@ public class Juego {
 		this.colisionar();
 		this.agregarEntidades();
 		this.eliminarEntidades();
-		this.colisionar();
 		this.getPersonaje().mover();
 		this.getPersonaje().lanzar(null);
 		this.verificarMapa();
@@ -91,27 +90,23 @@ public class Juego {
 	}
 	
 	private boolean verificarColision(Entidad entidad_1, Entidad entidad_2) {
-		//el rectangulo es mas chico que el tamanio real de la entidad para que las colisiones parezcan mas reales
-		Rectangle r1= entidad_1.getLabel().getBounds();
-		r1.height/=2.15;
-		r1.width/=3;
-		Rectangle r2= entidad_2.getLabel().getBounds();
-		r2.height/=2.15;
-		r2.width/=2;
+		Rectangle r1 = entidad_1.getBounds();
+		Rectangle r2 = entidad_2.getBounds();
+
 		return r1.intersects(r2);
 	}
 	
 	private void eliminarEntidades() {
-		if (this.personaje.getCargaViral() >= 100) {
-			entidadesAeliminar.add(personaje);
-		}
-		
 		for(Entidad e: listaEntidades) { 
 			if (e != personaje)
 				if(e.getCargaViral() <= 0) {
 					entidadesAeliminar.add(e);
 				}
 			}
+		
+		if (this.personaje.getCargaViral() >= 100) {
+			entidadesAeliminar.add(personaje);
+		}
 		
 		eliminarAux(entidadesAeliminar);
 	}

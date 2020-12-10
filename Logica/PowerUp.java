@@ -7,10 +7,12 @@ public class PowerUp extends Entidad {
 
 	public PowerUp(int x, int y) {
 		super(x, y);
-		label.setBounds(x, y, 70, 70);
+		label.setBounds(x, y, 40, 40);
 		cargaViral = 10;
 		visitor = new VisitorCuracion(this);
-		velocidad = 4;
+		velocidad = 10;
+		alto = 40;
+		ancho = 40;
 	}
 
 	public void aceptar(Visitor visitor) {

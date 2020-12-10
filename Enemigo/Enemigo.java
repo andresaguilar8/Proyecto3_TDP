@@ -20,6 +20,8 @@ public abstract class Enemigo extends Entidad {
 	public Enemigo(int x, int y) {
 		super(x, y);
 		visitor = new VisitorEnemigo(this);
+		this.ancho = 40;
+		this.alto = 40;
 	}
 
 	public void movilizar(int agregadoVelocidad) {
@@ -65,8 +67,7 @@ public abstract class Enemigo extends Entidad {
     
     protected void lanzarPowerUp() {
 		Random numAleatorio = new Random();
-		int n = numAleatorio.nextInt(6) + 1;
-		n = 1;
+		int n = numAleatorio.nextInt(10) + 1;
 		PowerUp powerup = null;
 		switch(n) {
 			case 1: 

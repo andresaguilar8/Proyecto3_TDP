@@ -10,6 +10,8 @@ public class LanzamientoAliado extends Lanzamiento {
 		super(cargaViral, x, y);
 		velocidad = 5;
 		this.label.setSize(4, 4);
+		ancho = 25;
+		alto = 7;
 		this.visitor = new VisitorLanzamientoAliado(this);
 	}
 	
@@ -23,7 +25,7 @@ public class LanzamientoAliado extends Lanzamiento {
 
 	public void lanzar(Entidad e) {
 		e.recibirCura(juego.getPersonaje().getPoderDeDesinfeccion());
-		System.out.println("lanzamientoAliado lanzando: "+juego.getPersonaje().getPoderDeDesinfeccion()+" de danio");
+		this.cargaViral = 0;
 	}
 	
 	public void recibirCargaViral(int i) {
